@@ -1,5 +1,6 @@
 package pl.przechowajzwierzaka.model;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -21,13 +22,11 @@ public class Blog {
     @Temporal(TemporalType.TIMESTAMP)
     private Date edited;
 
-    @Column(length = 50)
     @Size(max = 50)
     private String pic;
 
-    @Column(length = 1000, nullable = false)
     @Size(max = 1000)
-    @NotEmpty
+    @NotBlank
     private String content;
 
     @Column(columnDefinition = "TINYINT")

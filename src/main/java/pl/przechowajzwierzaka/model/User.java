@@ -1,6 +1,7 @@
 package pl.przechowajzwierzaka.model;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -16,19 +17,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 20, nullable = false)
     @Size(min = 5, max = 20)
-    @NotEmpty
+    @NotBlank
     private String login;
 
-    @Column(length = 20, nullable = false)
     @Size(min = 5, max = 20)
-    @NotEmpty
+    @NotBlank
     private String password;
 
-    @Column(length = 50, nullable = false)
     @Size(min = 5, max = 50)
-    @NotEmpty
+    @NotBlank
     private String email;
 
     @Column(columnDefinition="DATETIME")
@@ -39,11 +37,9 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     private Date last_login;
 
-    @Column(length = 50)
     @Size(max = 50)
     private String pic;
 
-    @Column(length = 300)
     @Size(max = 300)
     private String bio;
 
@@ -52,15 +48,12 @@ public class User {
     @Max(10)
     private double rating;
 
-    @Column(length = 50)
     @Size(max = 50)
     private String city;
 
-    @Column(length = 200)
     @Size(max = 200)
     private String address;
 
-    @Column(length = 30)
     @Size(max = 30)
     private String phone;
 

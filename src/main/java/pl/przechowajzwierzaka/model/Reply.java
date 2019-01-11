@@ -1,5 +1,6 @@
 package pl.przechowajzwierzaka.model;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -21,9 +22,8 @@ public class Reply {
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
-    @Column(length = 300, nullable = false)
     @Size(max = 300)
-    @NotEmpty
+    @NotBlank
     private String text;
 
     @Column(columnDefinition = "TINYINT")

@@ -1,5 +1,6 @@
 package pl.przechowajzwierzaka.model;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -21,7 +22,6 @@ public class Review {
     @NotEmpty
     private String type;
 
-    @Column(nullable = false)
     @NotNull
     private Long user_id;
 
@@ -30,8 +30,8 @@ public class Review {
     @Max(10)
     private double rating;
 
-    @Column(length = 1000, nullable = false)
     @Size(max = 1000)
+    @NotBlank
     private String description;
 
     @Column(columnDefinition = "DATETIME")
@@ -42,12 +42,12 @@ public class Review {
     @Temporal(TemporalType.TIMESTAMP)
     private Date edited;
 
-    @Column(length = 20, nullable = false)
-    @NotEmpty
+    @Size(max = 20)
+    @NotBlank
     private String animal_type;
 
-    @Column(length = 20, nullable = false)
-    @NotEmpty
+    @Size(max = 20)
+    @NotBlank
     private String requirements;
 
     @Column(columnDefinition = "TINYINT")

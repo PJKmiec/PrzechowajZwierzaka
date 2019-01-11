@@ -1,5 +1,6 @@
 package pl.przechowajzwierzaka.model;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -40,24 +41,19 @@ public class Offer {
     @Temporal(TemporalType.TIMESTAMP)
     private Date ends;
 
-    @Column(length = 50)
     @Size(max = 50)
     private String city;
 
-    @Column(length = 200)
     @Size(max = 200)
     private String address;
 
-    @Column(length = 30)
     @Size(max = 30)
     private String phone;
 
-    @Column(length = 50, nullable = false)
     @Size(min = 5, max = 50)
     @NotEmpty
     private String email;
 
-    @Column(length = 50)
     @Size(max = 50)
     private String pic;
 
@@ -92,7 +88,7 @@ public class Offer {
     private int misc;
 
     @Column(length = 20, nullable = false)
-    @NotEmpty
+    @NotBlank
     private String requirements;
 
     private Long claimed_by;
