@@ -25,6 +25,9 @@ public class Blog {
     @Size(max = 50)
     private String pic;
 
+    @Size(max = 150)
+    private String title;
+
     @Size(max = 1000)
     @NotBlank
     private String content;
