@@ -22,8 +22,12 @@ public class Review {
     @NotEmpty
     private String type;
 
-    @NotNull
-    private Long user_id;
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User author;
 
     @Column(precision = 4, scale = 2, nullable = false)
     @Min(1)

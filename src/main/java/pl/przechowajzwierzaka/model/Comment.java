@@ -17,13 +17,18 @@ public class Comment {
     @Column(length = 1, nullable = false)
     private String type;
 
-    private Long blog_id;
+    @ManyToOne
+    private Blog blog;
 
-    private Long offer_id;
+    @ManyToOne
+    private Offer offer;
 
-    private Long review_id;
+    @ManyToOne
+    private Review review;
 
-    private Long author_id;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User user;
 
     @Column(columnDefinition="DATETIME")
     @Temporal(TemporalType.TIMESTAMP)

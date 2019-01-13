@@ -14,9 +14,12 @@ public class Reply {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long comment_id;
+    @ManyToOne
+    private Comment comment;
 
-    private Long author_id;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User user;
 
     @Column(columnDefinition="DATETIME")
     @Temporal(TemporalType.TIMESTAMP)

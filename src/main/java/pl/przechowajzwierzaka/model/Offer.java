@@ -18,8 +18,8 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private Long user_id;
+    @ManyToOne
+    private User user;
 
     @Column(columnDefinition = "DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
@@ -91,7 +91,9 @@ public class Offer {
     @NotBlank
     private String requirements;
 
-    private Long claimed_by;
+    @ManyToOne
+    @JoinColumn(name = "claimed_by")
+    private User claimant;
 
     @Column(columnDefinition = "TINYINT UNSIGNED")
     private int status;
