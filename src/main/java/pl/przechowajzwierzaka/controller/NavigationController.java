@@ -12,14 +12,20 @@ public class NavigationController {
         return "index";
     }
 
+    // admin panel
+    @RequestMapping("/admin")
+    public String adminPanel() {
+        return "admin";
+    }
+
     // znajdź opiekuna
     @RequestMapping("/znajdz-opiekuna")
-    public String offersForOwner() { return "offers"; }
+    public String offersForOwner() { return "offersOwner"; }
 
     // zostan opiekunem
     @RequestMapping("/zostan-opiekunem")
     public String offersForSitter() {
-        return "offers";
+        return "offersSitter";
     }
 
     // pytania i odpowiedzi
@@ -28,12 +34,15 @@ public class NavigationController {
         return "faq";
     }
 
+    // blog
+    @RequestMapping("/blog")
+    public String blog() {
+        return "blog";
+    }
+
     // kontakt
     @RequestMapping("/kontakt")
     public String contact() { return "contact"; }
-
-
-
 
 }
 
