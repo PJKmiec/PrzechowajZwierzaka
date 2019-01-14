@@ -105,6 +105,7 @@
                 <div class="card-body">
                     <p class="card-text">
                     <ul><b>Użytkownik:</b>
+                        <li><a href="user/login">Logowanie</a></li>
                         <li><a href="user/add">Dodawanie użytkownika</a></li>
                         <li><a href="user/edit">Edycja / usuwanie użytkowników</a></li>
                     </ul>
@@ -136,81 +137,99 @@
     <!-- /.row -->
 
     <!-- Portfolio Section -->
-    <h2>Portfolio Heading</h2>
+    <h2>Szukają opiekuna</h2>
 
     <div class="row">
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="#"><img class="card-img-top" src="/resources/img/ani1.jpg" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">Project One</a>
+                        <a href="#">Gżegżółka</a>
                     </h4>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
                         aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt,
                         dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Project Two</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-                        odio, gravida pellentesque urna varius vitae.</p>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Więcej</a>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="#"><img class="card-img-top" src="/resources/img/ani2.jpg" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">Project Three</a>
+                        <a href="#">Stefan</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
+                        odio, gravida pellentesque urna varius vitae.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Więcej</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="/resources/img/ani3.jpg" alt=""></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="#">Jackie</a>
                     </h4>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error
                         quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure
                         perspiciatis mollitia recusandae vero vel quam!</p>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Project Four</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-                        odio, gravida pellentesque urna varius vitae.</p>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Więcej</a>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="#"><img class="card-img-top" src="/resources/img/ani4.jpg" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">Project Five</a>
+                        <a href="#">Zjadacz Ludzi</a>
                     </h4>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
                         odio, gravida pellentesque urna varius vitae.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Więcej</a>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="#"><img class="card-img-top" src="/resources/img/ani5.jpg" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">Project Six</a>
+                        <a href="#">Rozpruwacz</a>
+                    </h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
+                        odio, gravida pellentesque urna varius vitae.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Więcej</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="/resources/img/ani6.jpg" alt=""></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="#">Puszek</a>
                     </h4>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum
                         suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates,
                         nemo repellat fugiat excepturi! Nemo, esse.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Więcej</a>
                 </div>
             </div>
         </div>
@@ -220,23 +239,21 @@
     <!-- Features Section -->
     <div class="row">
         <div class="col-lg-6">
-            <h2>Modern Business Features</h2>
-            <p>The Modern Business template by Start Bootstrap includes:</p>
+            <h2>Zostań opiekunem</h2>
+            <p>Zarabiaj na swojej miłości do zwierząt:</p>
             <ul>
                 <li>
-                    <strong>Bootstrap v4</strong>
+                    <strong>$$$</strong>
                 </li>
-                <li>jQuery</li>
-                <li>Font Awesome</li>
-                <li>Working contact form with validation</li>
-                <li>Unstyled page elements for easy customization</li>
+                <li>nowe przyjaźnie</li>
+                <li>jeszcze jakieś zalety</li>
             </ul>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id
                 reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia
                 dolorum ducimus unde.</p>
         </div>
         <div class="col-lg-6">
-            <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+            <img class="img-fluid rounded" src="/resources/img/petsitter.jpg" alt="">
         </div>
     </div>
     <!-- /.row -->
@@ -250,7 +267,7 @@
                 beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
         </div>
         <div class="col-md-4">
-            <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
+            <a class="btn btn-lg btn-secondary btn-block" href="#">Zgłoś się do nas już teraz</a>
         </div>
     </div>
 

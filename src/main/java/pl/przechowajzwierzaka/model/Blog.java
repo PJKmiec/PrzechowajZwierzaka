@@ -14,7 +14,7 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition="DATETIME")
+    @Column(columnDefinition="DATETIME", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 

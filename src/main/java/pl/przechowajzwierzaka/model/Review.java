@@ -38,7 +38,7 @@ public class Review {
     @NotBlank
     private String description;
 
-    @Column(columnDefinition = "DATETIME")
+    @Column(columnDefinition = "DATETIME", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 

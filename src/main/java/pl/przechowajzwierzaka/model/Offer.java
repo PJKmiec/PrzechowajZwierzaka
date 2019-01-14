@@ -21,7 +21,7 @@ public class Offer {
     @ManyToOne
     private User user;
 
-    @Column(columnDefinition = "DATETIME")
+    @Column(columnDefinition = "DATETIME", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 

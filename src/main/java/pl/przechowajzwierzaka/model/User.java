@@ -3,6 +3,7 @@ package pl.przechowajzwierzaka.model;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -21,7 +22,8 @@ public class User {
     @NotBlank
     private String login;
 
-    @Size(min = 5, max = 20)
+    @Column(length = 250)
+    @Size(min = 5)
     @NotBlank
     private String password;
 
@@ -30,7 +32,7 @@ public class User {
     @Email
     private String email;
 
-    @Column(columnDefinition="DATETIME")
+    @Column(columnDefinition="DATETIME", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
@@ -83,9 +85,7 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) { this.password = BCrypt.hashpw(password, BCrypt.gensalt()); }
 
     public String getEmail() {
         return email;

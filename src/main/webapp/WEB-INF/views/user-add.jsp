@@ -14,6 +14,7 @@
 <body>
 <h1>User:</h1>
 <form:form modelAttribute="user" method="post">
+    ${errorMessage}<br>
     Login:<br><form:input path="login"/><br>
     <form:errors path="login"/><br>
     Adres email:<br><form:input path="email"/><br>
@@ -31,7 +32,7 @@
         <form:option value="2">Admin</form:option>
     </form:select><br>
     <form:errors path="type"/><br>
-    <input type="submit" value="Dodaj"/>
+    <input type="submit" value="Dalej"/>
 </form:form>
 </body>
 </html>

@@ -36,12 +36,8 @@
             <td>${item.rating}</td>
             <td>
                 <c:choose>
-                    <c:when test="${item.type=='1'}">
-                        Użytkownik
-                    </c:when>
-                    <c:when test="${item.type=='2'}">
-                        Admin
-                    </c:when>
+                    <c:when test="${item.type=='1'}">Użytkownik</c:when>
+                    <c:when test="${item.type=='2'}">Admin</c:when>
                 </c:choose>
             </td>
             <td>
