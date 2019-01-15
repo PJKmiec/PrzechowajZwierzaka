@@ -14,13 +14,11 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition="DATETIME", updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @Column(length = 20, updatable = false)
+    private String created;
 
-    @Column(columnDefinition="DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date edited;
+    @Column(length = 20)
+    private String edited;
 
     @Size(max = 50)
     private String pic;

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import pl.przechowajzwierzaka.model.User;
 import pl.przechowajzwierzaka.repository.UserRepository;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Service
 public class RegisterService {
 
@@ -23,7 +26,8 @@ public class RegisterService {
         } else if (emails > 0) { //check for duplicate email
             result = "email";
         } else {
-            u.setCreated(new java.util.Date());
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+            u.setCreated(timeStamp);
             userRepository.save(u);
         }
 

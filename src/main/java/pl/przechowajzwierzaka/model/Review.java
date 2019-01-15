@@ -10,6 +10,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
+import static javax.persistence.CascadeType.MERGE;
+
 @Entity
 @Table(name = "reviews")
 public class Review {
@@ -22,10 +24,10 @@ public class Review {
     @NotEmpty
     private String type;
 
-    @ManyToOne
+    @ManyToOne(cascade = {MERGE})
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = {MERGE})
     @JoinColumn(name = "author_id")
     private User author;
 
@@ -38,13 +40,11 @@ public class Review {
     @NotBlank
     private String description;
 
-    @Column(columnDefinition = "DATETIME", updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @Column(length = 20, updatable = false)
+    private String created;
 
-    @Column(columnDefinition = "DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date edited;
+    @Column(length = 20)
+    private String edited;
 
     @Size(max = 20)
     @NotBlank

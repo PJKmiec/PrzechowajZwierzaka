@@ -21,9 +21,8 @@ public class Reply {
     @JoinColumn(name = "author_id")
     private User user;
 
-    @Column(columnDefinition="DATETIME", updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @Column(length = 20, updatable = false)
+    private String created;
 
     @Size(max = 300)
     @NotBlank

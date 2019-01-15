@@ -57,8 +57,7 @@ public class UserController {
                 String loginResult = loginService.loginUser(user, login, password);
 
                 if (loginResult.equals("ok")) {
-                    session.setAttribute("login", login);
-                    session.setAttribute("type", user.getType());
+                    session.setAttribute("user", user);
                     return "redirect:/";
                 } else if (loginResult.equals("credentials")) {
                     model.addAttribute("user", user);

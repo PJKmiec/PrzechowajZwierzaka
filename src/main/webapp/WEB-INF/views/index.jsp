@@ -108,26 +108,29 @@
                         <li><a href="user/add">Dodawanie użytkownika</a></li>
                         <li><a href="user/edit">Edycja / usuwanie użytkowników</a></li>
                     </ul>
-                    <ul><b>Komentarz:</b>
-                        <li><a href="">Dodawanie komentarza</a></li>
-                        <li><a href="">Edycja / usuwanie komentarzy</a></li>
-                    </ul>
-                    <ul><b>Odpowiedź:</b>
-                        <li><a href="">Dodawanie odpowiedzi</a></li>
-                        <li><a href="">Edycja / usuwanie odpowiedzi</a></li>
-                    </ul>
-                    <ul><b>Oferta:</b>
-                        <li><a href="">Dodawanie oferty</a></li>
-                        <li><a href="">Edycja / usuwanie oferty</a></li>
-                    </ul>
-                    <ul><b>Recenzja:</b>
-                        <li><a href="">Dodawanie recenzji</a></li>
-                        <li><a href="">Edycja / usuwanie recenzji</a></li>
-                    </ul>
-                    <ul><b>Blog:</b>
-                        <li><a href="">Dodawanie bloga</a></li>
-                        <li><a href="">Edycja / usuwanie bloga</a></li>
-                    </ul>
+                    <c:if test = "${sessionScope.user.type == '2'}">
+                        <ul><b>Komentarz:</b>
+                            <li><a href="comment/add">Dodawanie komentarza</a></li>
+                            <li><a href="comment/edit">Edycja / usuwanie komentarzy</a></li>
+                        </ul>
+                        <ul><b>Odpowiedź:</b>
+                            <li><a href="reply/add">Dodawanie odpowiedzi</a></li>
+                            <li><a href="reply/edit">Edycja / usuwanie odpowiedzi</a></li>
+                        </ul>
+                        <ul><b>Oferta:</b>
+                            <li><a href="offer/add">Dodawanie oferty</a></li>
+                            <li><a href="offer/edit">Edycja / usuwanie oferty</a></li>
+                        </ul>
+                        <ul><b>Recenzja:</b>
+                            <li><a href="review/add">Dodawanie recenzji</a></li>
+                            <li><a href="review/edit">Edycja / usuwanie recenzji</a></li>
+                        </ul>
+                        <ul><b>Blog:</b>
+                            <li><a href="blog/add">Dodawanie bloga</a></li>
+                            <li><a href="blog/edit">Edycja / usuwanie bloga</a></li>
+                        </ul>
+                    </c:if>
+
                     </p>
                 </div>
             </div>
@@ -266,7 +269,7 @@
                 beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
         </div>
         <div class="col-md-4">
-            <a class="btn btn-lg btn-secondary btn-block" href="#">Zgłoś się do nas już teraz</a>
+            <a class="btn btn-lg btn-primary btn-block" href="#">Dołącz do nas już teraz</a>
         </div>
     </div>
 

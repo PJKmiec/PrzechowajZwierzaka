@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
+import static javax.persistence.CascadeType.MERGE;
+
 @Entity
 @Table(name = "comments")
 public class Comment {
@@ -17,22 +19,21 @@ public class Comment {
     @Column(length = 1, nullable = false)
     private String type;
 
-    @ManyToOne
+    @ManyToOne(cascade = {MERGE})
     private Blog blog;
 
-    @ManyToOne
+    @ManyToOne(cascade = {MERGE})
     private Offer offer;
 
-    @ManyToOne
+    @ManyToOne(cascade = {MERGE})
     private Review review;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {MERGE})
     @JoinColumn(name = "author_id")
     private User user;
 
-    @Column(columnDefinition="DATETIME", updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @Column(length = 20, updatable = false)
+    private String created;
 
     @Size(max = 300)
     @NotBlank

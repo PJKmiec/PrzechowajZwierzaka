@@ -34,13 +34,11 @@ public class User {
     @Email
     private String email;
 
-    @Column(columnDefinition="DATETIME", updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @Column(length=20, updatable = false)
+    private String created;
 
-    @Column(columnDefinition="DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date last_login;
+    @Column(length=20)
+    private String last_login;
 
     @Size(max = 50)
     private String pic;
@@ -67,9 +65,10 @@ public class User {
 
 //    constructors
 
-    public User(){}
+    public User() {
+    }
 
-    public User(String login, String password, String email, Date created, Date last_login, String pic, String bio, double rating, String city, String address, String phone, int type) {
+    public User(String login, String password, String email, String created, String last_login, String pic, String bio, double rating, String city, String address, String phone, int type) {
         this.login = login;
         this.password = password;
         this.email = email;
@@ -84,7 +83,7 @@ public class User {
         this.type = type;
     }
 
-    //    getters & setters
+//    getters & setters
 
     public Long getId() {
         return id;
@@ -106,7 +105,9 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) { this.password = BCrypt.hashpw(password, BCrypt.gensalt()); }
+    public void setPassword(String password) {
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+    }
 
     public String getEmail() {
         return email;
@@ -116,19 +117,19 @@ public class User {
         this.email = email;
     }
 
-    public Date getCreated() {
+    public String getCreated() {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(String created) {
         this.created = created;
     }
 
-    public Date getLast_login() {
+    public String getLast_login() {
         return last_login;
     }
 
-    public void setLast_login(Date last_login) {
+    public void setLast_login(String last_login) {
         this.last_login = last_login;
     }
 
@@ -197,8 +198,8 @@ public class User {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", created=" + created +
-                ", last_login=" + last_login +
+                ", created='" + created + '\'' +
+                ", last_login='" + last_login + '\'' +
                 ", pic='" + pic + '\'' +
                 ", bio='" + bio + '\'' +
                 ", rating=" + rating +

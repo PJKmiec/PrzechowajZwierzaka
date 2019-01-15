@@ -43,13 +43,13 @@
                     <a class="nav-link" href="kontakt">Kontakt</a>
                 </li>
                 <c:choose>
-                    <c:when test="${sessionScope.login!=null}">
+                    <c:when test="${sessionScope.user.login!=null}">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Twój profil</a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                <span class="dropdown-item">${sessionScope.login}</span>
+                                <span class="dropdown-item">${sessionScope.user.login}</span>
 
-                                <c:if test = "${sessionScope.type == '2'}">
+                                <c:if test = "${sessionScope.user.type == '2'}">
                                     <a class="dropdown-item" href="/admin">Panel administracyjny</a>
                                 </c:if>
 

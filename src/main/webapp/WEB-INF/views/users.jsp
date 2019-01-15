@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,8 +27,8 @@
             <td>${item.login}</td>
             <td>${item.email}</td>
             <td>${item.city}</td>
-            <td>${fn:substringBefore(item.created, ".")}</td>
-            <td>${fn:substringBefore(item.last_login, ".")}</td>
+            <td>${item.created}</td>
+            <td>${item.last_login}</td>
             <td>${item.address}</td>
             <td>${item.rating}</td>
             <td>
