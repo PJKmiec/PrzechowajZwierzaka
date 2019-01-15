@@ -3,43 +3,40 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Offers</title>
+    <title>Reviews</title>
 </head>
 <body>
-<h1>Offers:</h1>
+<h1>Reviews:</h1>
 
 <table border="1" cellpadding="5">
     <thead>
     <th>ID:</th>
-    <th>Imię zwierzaka:</th>
-    <th>Złożył:</th>
-    <th>Przyjął:</th>
-    <th>Utworzona:</th>
-    <th>Początek:</th>
-    <th>Koniec:</th>
-    <th>Cena:</th>
-    <th>Miasto:</th>
-    <th>Adres:</th>
-    <th>Telefon:</th>
-    <th>Email:</th>
+    <th>Ocena:</th>
+    <th>Gatunek zwierzaka:</th>
+    <th>Opis:</th>
+    <th>Dodana:</th>
+    <th>Autor oferty:</th>
+    <th>Autor recenzji:</th>
+    <th>Rodzaj:</th>
     <th>Wymagania:</th>
     <th>Akcje:</th>
     </thead>
     <tbody>
-    <c:forEach items="${offers}" var="item">
+    <c:forEach items="${reviews}" var="item">
         <tr>
             <td>${item.id}</td>
-            <td>${item.pet_name}</td>
-            <td>${item.user.login}</td>
-            <td>${item.claimant.login}</td>
+            <td>${item.rating}</td>
+            <td>${item.animal_type}</td>
+            <td>${item.description}</td>
             <td>${item.created}</td>
-            <td>${item.starts}</td>
-            <td>${item.ends}</td>
-            <td>${item.price}</td>
-            <td>${item.city}</td>
-            <td>${item.address}</td>
-            <td>${item.phone}</td>
-            <td>${item.email}</td>
+            <td>${item.user.login}</td>
+            <td>${item.author.login}</td>
+            <td>
+                <c:choose>
+                    <c:when test="${item.type=='o'}">Recenzja właściciela</c:when>
+                    <c:when test="${item.type=='s'}">Recenzja opiekuna</c:when>
+                </c:choose>
+            </td>
             <td>
                 <c:if test = "${fn:contains(item.requirements, 'f')}">karmienie</c:if>
                 <c:if test = "${fn:contains(item.requirements, 'w')}">spacery</c:if>
@@ -52,7 +49,6 @@
                 <c:if test = "${fn:contains(item.requirements, 'i')}">choruje</c:if>
             </td>
             <td>
-                <a href="/review/add/${item.id}">Zrecenzuj</a>
                 <a href="edit/${item.id}">Edytuj</a>
                 <a href="delete/${item.id}">Usuń</a>
             </td>

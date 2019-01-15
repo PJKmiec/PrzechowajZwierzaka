@@ -137,7 +137,6 @@ public class Offer {
 
 //    getters & setters
 
-
     public Long getId() {
         return id;
     }

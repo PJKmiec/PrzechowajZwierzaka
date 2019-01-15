@@ -19,6 +19,8 @@
     <form:errors path="login"/><br>
     Adres email:<br><form:input path="email"/><br>
     <form:errors path="email"/><br>
+    Ścieżka obrazka:<br><form:input path="pic"/><br>
+    <form:errors path="pic"/><br>
     Hasło:<br><form:password path="password"/><br>
     <form:errors path="password"/><br>
     Miasto:<br><form:input path="city"/><br>

@@ -53,7 +53,7 @@
                                     <a class="dropdown-item" href="/admin">Panel administracyjny</a>
                                 </c:if>
 
-                                <a class="dropdown-item" href="">Edytuj profil</a>
+                                <a class="dropdown-item" href="user/edit/${sessionScope.user.id}">Edytuj profil</a>
                                 <a class="dropdown-item" href="user/logout">Wyloguj się</a>
                             </div>
                         </li>

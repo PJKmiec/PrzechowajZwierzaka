@@ -23,9 +23,6 @@ import java.util.List;
 public class OfferController {
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
     private OfferRepository offerRepository;
 
     @ModelAttribute("requirements")
@@ -47,7 +44,6 @@ public class OfferController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addOfferPost(@Valid Offer offer, BindingResult result, @SessionAttribute User user) {
-        System.out.println(user);
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
             return "offer-add";
@@ -68,14 +64,15 @@ public class OfferController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String editOfferPost(@PathVariable long id, @Valid Offer offer, BindingResult result, @SessionAttribute User user) {
+    public String editOfferPost(@PathVariable long id, @Valid Offer offer, BindingResult result) {
         if (result.hasErrors()) {
             return "offer-add";
         }
+        Offer original = offerRepository.findOne(id);
         offer.setId(id);
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         offer.setEdited(timeStamp);
-        offer.setUser(user);
+        offer.setUser(original.getUser());
         offerRepository.save(offer);
         return "redirect:/offer/edit";
     }

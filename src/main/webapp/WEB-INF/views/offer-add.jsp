@@ -19,6 +19,8 @@
     ${errorMessage}<br>
     Imię pupila:<br><form:input path="pet_name"/><br>
     <form:errors path="pet_name"/><br>
+    Ścieżka obrazka:<br><form:input path="pic"/><br>
+    <form:errors path="pic"/><br>
     Początek:<br><form:input path="starts"/><br>
     <form:errors path="starts"/><br>
     Koniec:<br><form:input path="ends"/><br>

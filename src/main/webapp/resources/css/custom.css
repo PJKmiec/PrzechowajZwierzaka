@@ -20,6 +20,7 @@ header {
     top: -55px;
     width: 1350px;
     margin: 0 auto;
+    margin-bottom: -55px;
 }
 
 .carousel-item {
