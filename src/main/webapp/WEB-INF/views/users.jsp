@@ -28,10 +28,8 @@
             <td>${item.login}</td>
             <td>${item.email}</td>
             <td>${item.city}</td>
-            <td><c:set var="created" value="${item.created}" />
-                    ${fn:substringBefore(created, ".")}
-            </td>
-            <td>${item.last_login}</td>
+            <td>${fn:substringBefore(item.created, ".")}</td>
+            <td>${fn:substringBefore(item.last_login, ".")}</td>
             <td>${item.address}</td>
             <td>${item.rating}</td>
             <td>

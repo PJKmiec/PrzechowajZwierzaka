@@ -39,4 +39,12 @@ header {
     text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5), 0px 0px 5px rgba(0, 0, 0, 0.6);
 }
 
-.h-100 {height: auto!important;}
+.h-100 {
+    height: auto !important;
+}
+
+span.dropdown-item, span.dropdown-item:hover {
+    background: #6c7279;
+    color: white;
+}
+

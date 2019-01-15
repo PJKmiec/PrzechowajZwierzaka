@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,31 +42,28 @@
                 <li class="nav-item">
                     <a class="nav-link" href="kontakt">Kontakt</a>
                 </li>
-                <!-- <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Blog
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                    <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-                    <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-                    <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-                  </div>
-                </li> -->
-                <!-- <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Other Pages
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                    <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-                    <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-                    <a class="dropdown-item" href="faq.html">FAQ</a>
-                    <a class="dropdown-item" href="404.html">404</a>
-                    <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-                  </div>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link" href="zaloguj-sie">Zaloguj się</a>
-                </li>
+                <c:choose>
+                    <c:when test="${sessionScope.login!=null}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Twój profil</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                                <span class="dropdown-item">${sessionScope.login}</span>
+
+                                <c:if test = "${sessionScope.type == '2'}">
+                                    <a class="dropdown-item" href="/admin">Panel administracyjny</a>
+                                </c:if>
+
+                                <a class="dropdown-item" href="">Edytuj profil</a>
+                                <a class="dropdown-item" href="user/logout">Wyloguj się</a>
+                            </div>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item">
+                            <a class="nav-link" href="user/login">Zaloguj się</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
         </div>
     </div>

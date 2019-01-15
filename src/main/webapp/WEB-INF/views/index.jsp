@@ -105,7 +105,6 @@
                 <div class="card-body">
                     <p class="card-text">
                     <ul><b>Użytkownik:</b>
-                        <li><a href="user/login">Logowanie</a></li>
                         <li><a href="user/add">Dodawanie użytkownika</a></li>
                         <li><a href="user/edit">Edycja / usuwanie użytkowników</a></li>
                     </ul>
@@ -145,7 +144,7 @@
                 <a href="#"><img class="card-img-top" src="/resources/img/ani1.jpg" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">Gżegżółka</a>
+                        <a href="#">Śmigacz</a>
                     </h4>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
                         aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt,
@@ -161,7 +160,7 @@
                 <a href="#"><img class="card-img-top" src="/resources/img/ani2.jpg" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">Stefan</a>
+                        <a href="#">Kapciojad</a>
                     </h4>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
                         odio, gravida pellentesque urna varius vitae.</p>

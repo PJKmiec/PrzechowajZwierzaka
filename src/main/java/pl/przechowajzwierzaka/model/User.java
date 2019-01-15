@@ -18,6 +18,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     @Size(min = 5, max = 20)
     @NotBlank
     private String login;
@@ -27,6 +28,7 @@ public class User {
     @NotBlank
     private String password;
 
+    @Column(unique = true)
     @Size(min = 5, max = 50)
     @NotBlank
     @Email
@@ -47,7 +49,7 @@ public class User {
     private String bio;
 
     @Column(precision = 4, scale = 2)
-    @Min(1)
+    @Min(0)
     @Max(10)
     private double rating;
 
@@ -63,7 +65,26 @@ public class User {
     @Column(columnDefinition = "TINYINT")
     private int type;
 
-//    getters & setters
+//    constructors
+
+    public User(){}
+
+    public User(String login, String password, String email, Date created, Date last_login, String pic, String bio, double rating, String city, String address, String phone, int type) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.created = created;
+        this.last_login = last_login;
+        this.pic = pic;
+        this.bio = bio;
+        this.rating = rating;
+        this.city = city;
+        this.address = address;
+        this.phone = phone;
+        this.type = type;
+    }
+
+    //    getters & setters
 
     public Long getId() {
         return id;

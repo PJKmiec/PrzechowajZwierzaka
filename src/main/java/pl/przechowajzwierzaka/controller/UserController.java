@@ -1,5 +1,6 @@
 package pl.przechowajzwierzaka.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +9,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.przechowajzwierzaka.model.User;
 import pl.przechowajzwierzaka.repository.UserRepository;
+import pl.przechowajzwierzaka.service.LoginService;
 import pl.przechowajzwierzaka.service.RegisterService;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -21,6 +27,9 @@ public class UserController {
     private UserRepository userRepository;
 
     @Autowired
+    private LoginService loginService;
+
+    @Autowired
     private RegisterService registerService;
 
     @ModelAttribute("users")
@@ -30,25 +39,46 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginUserGet(Model model) {
-        User user = new User();
-        model.addAttribute(user);
+        model.addAttribute(new User());
         return "user-login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginUserPost(Model model, @RequestParam String login, @RequestParam String password) {
-        User targetUser = userRepository.findOneByLogin(login);
+    public String loginUserPost(Model model, @RequestParam String login, @RequestParam String password, HttpSession session) {
 
-        if (targetUser.getLogin().equals(login) && BCrypt.checkpw(password, targetUser.getPassword())) {
-            targetUser.setLast_login(new java.util.Date());
-            userRepository.save(targetUser);
+        if (StringUtils.isNotBlank(login) && StringUtils.isNotBlank(password)) {
+            User user = userRepository.findOneByLogin(login);
+
+            if (user == null) {
+                model.addAttribute("user", new User());
+                model.addAttribute("errorMessage", "Nie znaleziono użytkownika z takim loginem!");
+                return "user-login";
+            } else {
+                String loginResult = loginService.loginUser(user, login, password);
+
+                if (loginResult.equals("ok")) {
+                    session.setAttribute("login", login);
+                    session.setAttribute("type", user.getType());
+                    return "redirect:/";
+                } else if (loginResult.equals("credentials")) {
+                    model.addAttribute("user", user);
+                    model.addAttribute("errorMessage", "Błędny login lub hasło!");
+                    return "user-login";
+                }
+            }
         } else {
-            model.addAttribute("user", targetUser);
-            model.addAttribute("errorMessage", "Błędny login lub hasło!");
+            model.addAttribute("user", new User());
+            model.addAttribute("errorMessage", "Podaj login i hasło!");
             return "user-login";
         }
+        return "";
+    }
 
-        return "redirect:/user/edit";
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession();
+        httpSession.invalidate();
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -69,12 +99,12 @@ public class UserController {
             model.addAttribute("user", user);
             model.addAttribute("errorMessage", "Taki login jest już używany!");
             return "user-add";
-        }else if (registerResult.equals("email")) {
+        } else if (registerResult.equals("email")) {
             model.addAttribute("user", user);
             model.addAttribute("errorMessage", "Taki email jest już używany!");
             return "user-add";
         }
-            return "redirect:/user/edit";
+        return "redirect:/user/edit";
     }
 
     @RequestMapping("/edit")

@@ -26,7 +26,7 @@ public class Comment {
     @ManyToOne
     private Review review;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
     private User user;
 
