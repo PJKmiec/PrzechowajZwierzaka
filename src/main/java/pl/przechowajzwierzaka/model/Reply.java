@@ -31,5 +31,66 @@ public class Reply {
     @Column(columnDefinition = "TINYINT")
     private int status;
 
+//    constructors
+
+    public Reply(){}
+
+    public Reply(Comment comment, User user, String created, String text, int status) {
+        this.comment = comment;
+        this.user = user;
+        this.created = created;
+        this.text = text;
+        this.status = status;
+    }
+
+//    getters & setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Comment getComment() {
+        return comment;
+    }
+
+    public void setComment(Comment comment) {
+        this.comment = comment;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
 }

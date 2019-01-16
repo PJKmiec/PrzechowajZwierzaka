@@ -52,7 +52,7 @@
                 <c:if test = "${fn:contains(item.requirements, 'i')}">choruje</c:if>
             </td>
             <td>
-                <a href="/comment/offer/${item.id}">Skomentuj</a>
+                <a href="/comments/offer/${item.id}">Komentarze</a>
                 <a href="/review/add/${item.id}">Zrecenzuj</a>
                 <a href="edit/${item.id}">Edytuj</a>
                 <a href="delete/${item.id}">Usuń</a>

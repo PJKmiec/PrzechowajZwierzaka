@@ -28,7 +28,7 @@
             <td>${item.content}</td>
             <td>${item.pic}</td>
             <td>
-                <a href="/comment/blog/${item.id}">Skomentuj</a>
+                <a href="/comments/blog/${item.id}">Komentarze</a>
                 <a href="edit/${item.id}">Edytuj</a>
                 <a href="delete/${item.id}">Usuń</a>
             </td>
