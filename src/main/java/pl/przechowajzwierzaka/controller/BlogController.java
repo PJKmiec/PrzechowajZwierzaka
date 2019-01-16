@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.przechowajzwierzaka.model.Blog;
+import pl.przechowajzwierzaka.model.Comment;
 import pl.przechowajzwierzaka.repository.BlogRepository;
+import pl.przechowajzwierzaka.repository.CommentRepository;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
@@ -22,11 +24,24 @@ public class BlogController {
     @Autowired
     BlogRepository blogRepository;
 
-    @RequestMapping("/edit")
+    @Autowired
+    CommentRepository commentRepository;
+
+    @RequestMapping("/all")
     public String listPosts(Model model) {
-        List<Blog> posts = blogRepository.findAll();
+        List<Blog> posts = blogRepository.findAllByOrderByIdDesc();
         model.addAttribute("posts", posts);
         return "blog";
+    }
+
+    @RequestMapping("/see/{id}")
+    public String seePost(@PathVariable long id, Model model) {
+        Blog post = blogRepository.findOne(id);
+        List<Comment> comments = commentRepository.findAllByTypeAndBlogOrderByIdDesc("b", post);
+        model.addAttribute("post", post);
+        model.addAttribute("comments", comments);
+        model.addAttribute("comment", new Comment());
+        return "blog-post";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -46,7 +61,7 @@ public class BlogController {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         post.setCreated(timeStamp);
         blogRepository.save(post);
-        return "redirect:/blog/edit";
+        return "redirect:/blog/all";
     }
 
     @RequestMapping("/edit/{id}")
@@ -65,13 +80,14 @@ public class BlogController {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         post.setEdited(timeStamp);
         blogRepository.save(post);
-        return "redirect:/blog/edit";
+        return "redirect:/blog/all";
     }
 
     @RequestMapping("/delete/{id}")
     public String deletePost(@PathVariable long id) {
+        commentRepository.deleteAllByBlog(blogRepository.findOne(id));
         blogRepository.delete(id);
-        return "redirect:/blog/edit";
+        return "redirect:/blog/all";
     }
 
 }

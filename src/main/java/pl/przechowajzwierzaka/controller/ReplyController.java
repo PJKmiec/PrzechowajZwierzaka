@@ -50,4 +50,18 @@ public class ReplyController {
         replyRepository.save(reply);
         return "redirect:"+ referer;
     }
+
+    @RequestMapping("/flag/{id}")
+    public String flagReply(@PathVariable long id, HttpServletRequest request) {
+        replyRepository.flagById(id);
+        String referer = request.getHeader("Referer");
+        return "redirect:"+ referer;
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteReply(@PathVariable long id, HttpServletRequest request) {
+        replyRepository.delete(id);
+        String referer = request.getHeader("Referer");
+        return "redirect:"+ referer;
+    }
 }

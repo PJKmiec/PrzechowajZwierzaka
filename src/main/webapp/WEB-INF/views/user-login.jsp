@@ -1,25 +1,62 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: pawel
-  Date: 14.01.19
-  Time: 18:06
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Zaloguj się</title>
-</head>
-<body>
-<h1>Zaloguj się:</h1>
-<form:form modelAttribute="user" method="post">
-    ${errorMessage}<br>
-    Login:<br><form:input path="login"/><br>
-    <form:errors path="login"/><br>
-    Hasło:<br><form:password path="password"/><br>
-    <form:errors path="password"/><br>
-    <input type="submit" value="Zaloguj się"/>
-</form:form>
-</body>
-</html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="components/header.jsp"/>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Zaloguj się
+        <small></small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">PrzechowajZwierzaka.pl</a>
+        </li>
+        <li class="breadcrumb-item active">Zaloguj się</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+
+                <form:form modelAttribute="user" method="post" class="form-horizontal centered-form">
+                    <div class="form-group">
+                        <span class="form-error">${errorMessage}</span>
+                        <label class="control-label col-sm-2" for="login">Login:</label>
+                        <div class="col-sm-10">
+                            <form:input path="login" class="form-control" placeholder="Twój login" />
+                            <form:errors path="login"/><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="password">Hasło:</label>
+                        <div class="col-sm-10">
+                            <form:password path="password" class="form-control" placeholder="Twoje hasło" />
+                            <form:errors path="password"/><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="remember"> Pamiętaj mnie</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Zaloguj się</button>
+                        </div>
+                    </div>
+                </form:form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<jsp:include page="components/footer.jsp"/>

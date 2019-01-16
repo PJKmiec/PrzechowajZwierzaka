@@ -15,6 +15,7 @@
         <div class="carousel-inner" role="listbox">
             <!-- Slide One - Set the background image for this slide in the line below -->
             <div class="carousel-item active" style="background-image: url('/resources/img/pet7.jpg')">
+                <div class="carousel-gradient"></div>
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Planujesz wyjazd?</h3>
                     <p>Znajdź miłośnika zwierząt który zaopiekuje się Twoim pupilem!</p>
@@ -22,6 +23,7 @@
             </div>
             <!-- Slide Two - Set the background image for this slide in the line below -->
             <div class="carousel-item" style="background-image: url('/resources/img/pet4.jpg')">
+                <div class="carousel-gradient"></div>
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Zadbaj o swojego ulubieńca</h3>
                     <p>Z właściwym opiekunem on też może się cieszyć pełnią urlopu!</p>
@@ -29,6 +31,7 @@
             </div>
             <!-- Slide Three - Set the background image for this slide in the line below -->
             <div class="carousel-item" style="background-image: url('/resources/img/pet3.jpg')">
+                <div class="carousel-gradient"></div>
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Zwierzę to nie bagaż</h3>
                     <p>Wiele zwierząt źle znosi podróże i zmiany otoczenia, za to łatwo nawiązuje przyjaźnie</p>
@@ -36,25 +39,29 @@
             </div>
             <!-- Slide Four - Set the background image for this slide in the line below -->
             <div class="carousel-item" style="background-image: url('/resources/img/pet2.jpg')">
+                <div class="carousel-gradient"></div>
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Odpocznij na urlopie</h3>
-                    <p>Transport zwierzaka i zapewnienie mu opieki poza domem bywa poważnym wyzwaniem</p>
+                    <p>Transport zwierzaka i zapewnienie mu opieki poza domem to poważne wyzwanie</p>
                 </div>
             </div>
             <!-- Slide Five - Set the background image for this slide in the line below -->
             <div class="carousel-item" style="background-image: url('/resources/img/pet1.jpg')">
+                <div class="carousel-gradient"></div>
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Wypocznij i pozwól wypocząć</h3>
-                    <p>Odpocznij i wróć do swojego milusińskiego by na nowo odkrywać Waszą relację</p>
+                    <h3>Wypoczęci i stęsknieni</h3>
+                    <p>Właśnie tacy będziecie Ty i Twój pupil na koniec urlopu</p>
                 </div>
             </div>
             <!-- Slide Six - Set the background image for this slide in the line below -->
             <div class="carousel-item" style="background-image: url('/resources/img/pet11.jpg')">
+                <div class="carousel-gradient"></div>
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Małe i duże, z futrem i bez</h3>
                     <p>Każdy zasługuje na odpoczynek i na nowych przyjaciół</p>
                 </div>
             </div>
+
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -65,6 +72,8 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    <div class="carousel-grade-left"></div>
+    <div class="carousel-grade-right"></div>
 </header>
 
 <!-- Page Content -->
@@ -82,7 +91,7 @@
                         necessitatibus neque.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Więcej</a>
+                    <a href="/znajdz-opiekuna" class="btn btn-primary">Więcej</a>
                 </div>
             </div>
         </div>
@@ -95,7 +104,7 @@
                         exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Więcej</a>
+                    <a href="/zostan-opiekunem" class="btn btn-primary">Więcej</a>
                 </div>
             </div>
         </div>
@@ -118,7 +127,7 @@
                         </ul>
                         <ul><b>Blog:</b>
                             <li><a href="blog/add">Dodawanie bloga</a></li>
-                            <li><a href="blog/edit">Edycja / usuwanie bloga</a></li>
+                            <li><a href="blog/all">Edycja / usuwanie bloga</a></li>
                         </ul>
                     </c:if>
 

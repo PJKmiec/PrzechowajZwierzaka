@@ -14,6 +14,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     List<Comment> findAllByTypeAndOfferOrderByIdDesc(String type, Offer offer);
     List<Comment> findAllByTypeAndReviewOrderByIdDesc(String type, Review review);
     Comment findFirstByOrderByIdDesc();
+    void deleteAllByBlog(Blog blog);
 
     @Modifying
     @Query(value = "UPDATE comments SET STATUS = 1 WHERE ID = ?1", nativeQuery = true)

@@ -36,7 +36,7 @@ public class Comment {
     @JoinColumn(name = "author_id")
     private User user;
 
-    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Reply> replies = new ArrayList<>();
 
     @Column(length = 20, updatable = false)

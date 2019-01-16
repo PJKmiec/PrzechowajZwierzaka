@@ -54,7 +54,7 @@ public class CommentController {
 
         Comment comment = new Comment();
         model.addAttribute("comment", comment);
-        return "comments";
+        return "redirect:/" + type + "/see/" + id;
     }
 
     @RequestMapping(value = "/{type}/{id}", method = RequestMethod.POST)

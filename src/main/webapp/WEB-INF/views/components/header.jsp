@@ -28,19 +28,19 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="znajdz-opiekuna">Znajdź opiekuna</a>
+                    <a class="nav-link" href="/znajdz-opiekuna">Znajdź opiekuna</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="zaopiekuj-sie">Zaopiekuj się</a>
+                    <a class="nav-link" href="/zaopiekuj-sie">Zaopiekuj się</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pytania-i-odpowiedzi">Pytania i odpowiedzi</a>
+                    <a class="nav-link" href="/pytania-i-odpowiedzi">Pytania i odpowiedzi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog">Blog</a>
+                    <a class="nav-link" href="/blog/all">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="kontakt">Kontakt</a>
+                    <a class="nav-link" href="/kontakt">Kontakt</a>
                 </li>
                 <c:choose>
                     <c:when test="${sessionScope.user.login!=null}">
@@ -60,7 +60,7 @@
                     </c:when>
                     <c:otherwise>
                         <li class="nav-item">
-                            <a class="nav-link" href="user/login">Zaloguj się</a>
+                            <a class="nav-link" href="/user/login">Zaloguj się</a>
                         </li>
                     </c:otherwise>
                 </c:choose>
