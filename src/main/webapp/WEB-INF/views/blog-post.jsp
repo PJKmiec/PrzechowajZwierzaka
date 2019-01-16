@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="components/header.jsp"/>
+<c:set var="newline" value="<%= \"\n\" %>"/>
 
 <!-- Page Content -->
 <div class="container">
@@ -50,7 +51,7 @@
                             <form:textarea path="text" class="form-control" rows="3"/><br>
                             <form:errors path="text"/>
                         </div>
-                        <button type="submit" class="btn btn-primary">Wyslij &raquo;</button>
+                        <button type="submit" class="btn btn-primary">Wyślij &raquo;</button>
                     </form:form>
 
                 </div>
@@ -65,7 +66,8 @@
                         <div class="upper-toolbar">
                             <a href="/reply/${item.id}">Odpowiedz</a>
                             <c:choose>
-                                <c:when test="${item.status==0}">| <a href="/comments/flag/${item.id}">Zgłoś</a></c:when>
+                                <c:when test="${item.status==0}">| <a
+                                        href="/comments/flag/${item.id}">Zgłoś</a></c:when>
                                 <c:when test="${item.status==1}">| Zgłoszono</c:when>
                             </c:choose>
 
@@ -75,7 +77,7 @@
                         </div>
                         <h5 class="mt-0">${item.user.login}</h5>
                         <h6 class="small-date">- ${item.created} -</h6>
-                            ${item.text}
+                            ${fn:replace(item.text, newline, "<br />")}
 
                         <c:if test="${not empty item.replies}">
                             <c:forEach items="${item.replies}" var="r">
@@ -88,7 +90,8 @@
                                         <div class="upper-toolbar">
                                             <a href="/reply/${item.id}">Odpowiedz</a>
                                             <c:choose>
-                                                <c:when test="${r.status==0}">| <a href="/reply/flag/${r.id}">Zgłoś</a></c:when>
+                                                <c:when test="${r.status==0}">| <a
+                                                        href="/reply/flag/${r.id}">Zgłoś</a></c:when>
                                                 <c:when test="${r.status==1}">| Zgłoszono</c:when>
                                             </c:choose>
 
@@ -99,7 +102,8 @@
 
                                         <h5 class="mt-0">${r.user.login}</h5>
                                         <h6 class="small-date">- ${item.created} -</h6>
-                                            ${r.text}
+                                            ${fn:replace(r.text, newline, "<br />")}
+
                                     </div>
                                 </div>
 

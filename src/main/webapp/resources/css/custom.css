@@ -105,3 +105,5 @@ h6.small-date{font-size: 12px; color: #6c757d;}
 
 .media-body {position: relative;}
 .upper-toolbar{position: absolute; top: 0px; right: 0px; font-size: 14px;}
+
+.dropdown-item:hover {color: #fff; background-color: #007bff;}

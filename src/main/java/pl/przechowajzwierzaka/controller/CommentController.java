@@ -61,7 +61,7 @@ public class CommentController {
     public String addComment(@PathVariable String type, @PathVariable long id, @Valid Comment comment, BindingResult result, @SessionAttribute User user) {
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
-            return "comments";
+            return "redirect:/" + type + "/see/" + id;
         }
 
         switch (type) {

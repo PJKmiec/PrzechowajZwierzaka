@@ -47,10 +47,13 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Zaloguj się</button>
+                            <button type="submit" class="btn btn-primary">Zaloguj się</button>
                         </div>
+                        <hr>
+                        Nie masz jeszcze konta? <a href="/user/register">Zarejestruj się teraz! &raquo;</a>
                     </div>
                 </form:form>
+
 
             </div>
         </div>

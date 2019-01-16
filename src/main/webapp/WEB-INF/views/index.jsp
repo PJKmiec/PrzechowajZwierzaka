@@ -114,7 +114,7 @@
                 <div class="card-body">
                     <p class="card-text">
                     <ul><b>Użytkownik:</b>
-                        <li><a href="user/add">Dodawanie użytkownika</a></li>
+                        <li><a href="user/register">Dodawanie użytkownika</a></li>
                         <li><a href="user/edit">Edycja / usuwanie użytkowników</a></li>
                     </ul>
                     <c:if test = "${sessionScope.user.type == '2'}">

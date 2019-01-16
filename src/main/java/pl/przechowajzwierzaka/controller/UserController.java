@@ -80,14 +80,14 @@ public class UserController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String addUser(Model model) {
         User user = new User();
         model.addAttribute(user);
         return "user-add";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String addUserPost(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "user-add";
@@ -103,7 +103,7 @@ public class UserController {
             model.addAttribute("errorMessage", "Taki email jest już używany!");
             return "user-add";
         }
-        return "redirect:/user/edit";
+        return "redirect:/user/login";
     }
 
     @RequestMapping("/edit")
