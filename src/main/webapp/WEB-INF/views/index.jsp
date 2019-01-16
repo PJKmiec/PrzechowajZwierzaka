@@ -116,13 +116,6 @@
                         <ul><b>Recenzja:</b>
                             <li><a href="review/edit">Edycja / usuwanie recenzji</a></li>
                         </ul>
-                        <ul><b>Komentarz:</b>
-                            <li><a href="comment/add">Dodawanie komentarza</a></li>
-                            <li><a href="comment/edit">Edycja / usuwanie komentarzy</a></li>
-                        </ul>
-                        <ul><b>Odpowiedź:</b>
-                            <li><a href="reply/edit">Edycja / usuwanie odpowiedzi</a></li>
-                        </ul>
                         <ul><b>Blog:</b>
                             <li><a href="blog/add">Dodawanie bloga</a></li>
                             <li><a href="blog/edit">Edycja / usuwanie bloga</a></li>
