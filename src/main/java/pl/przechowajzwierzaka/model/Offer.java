@@ -51,7 +51,7 @@ public class Offer {
     private String phone;
 
     @Size(min = 5, max = 50)
-    @NotEmpty
+    @NotBlank
     private String email;
 
     @Size(max = 50)
@@ -61,6 +61,7 @@ public class Offer {
     private String pet_name;
 
     @Size(max = 1000)
+    @NotBlank
     private String description;
 
     @Column(columnDefinition = "TINYINT UNSIGNED")

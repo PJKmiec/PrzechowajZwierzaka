@@ -1,74 +1,277 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: pawel
-  Date: 14.01.19
-  Time: 12:51
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Offer add</title>
-</head>
-<body>
-<h1>Offer:</h1>
-<form:form modelAttribute="offer" method="post">
-    ${errorMessage}<br>
-    Imię pupila:<br><form:input path="pet_name"/><br>
-    <form:errors path="pet_name"/><br>
-    Ścieżka obrazka:<br><form:input path="pic"/><br>
-    <form:errors path="pic"/><br>
-    Początek:<br><form:input path="starts"/><br>
-    <form:errors path="starts"/><br>
-    Koniec:<br><form:input path="ends"/><br>
-    <form:errors path="ends"/><br>
-    Cena:<br><form:input path="price"/><br>
-    <form:errors path="price"/><br>
-    Miasto:<br><form:input path="city"/><br>
-    <form:errors path="city"/><br>
-    Adres:<br><form:input path="address"/><br>
-    <form:errors path="address"/><br>
-    Telefon:<br><form:input path="phone"/><br>
-    <form:errors path="phone"/><br>
-    Email:<br><form:input path="email"/><br>
-    <form:errors path="email"/><br>
-    Opis:<br><form:textarea path="description"/><br>
-    <form:errors path="description"/><br>
-    Psy: <form:input path="dogs"/><br>
-    <form:errors path="dogs"/><br>
-    Koty: <form:input path="cats"/><br>
-    <form:errors path="cats"/><br>
-    Ptaki: <form:input path="birds"/><br>
-    <form:errors path="birds"/><br>
-    Ryby: <form:input path="fish"/><br>
-    <form:errors path="fish"/><br>
-    Małe gryzonie: <form:input path="small_rodents"/><br>
-    <form:errors path="small_rodents"/><br>
-    Duże gryzonie: <form:input path="big_rodents"/><br>
-    <form:errors path="big_rodents"/><br>
-    Płazy/gady: <form:input path="reptiles"/><br>
-    <form:errors path="reptiles"/><br>
-    Konie: <form:input path="horses"/><br>
-    <form:errors path="horses"/><br>
-    Owady: <form:input path="bugs"/><br>
-    <form:errors path="bugs"/><br>
-    Inne: <form:input path="misc"/><br>
-    <form:errors path="misc"/><br>
-    Potrzebuje:<br>
-    <input name="requirements" type="checkbox" value="f" <c:if test = "${fn:contains(offer.requirements, 'f')}">checked</c:if> />karmienia<br>
-    <input name="requirements" type="checkbox" value="w" <c:if test = "${fn:contains(offer.requirements, 'w')}">checked</c:if> />spacerów<br>
-    <input name="requirements" type="checkbox" value="c" <c:if test = "${fn:contains(offer.requirements, 'c')}">checked</c:if> />sprzątania<br>
-    <input name="requirements" type="checkbox" value="g" <c:if test = "${fn:contains(offer.requirements, 'g')}">checked</c:if> />pielęgnacji<br>
-    <input name="requirements" type="checkbox" value="m" <c:if test = "${fn:contains(offer.requirements, 'm')}">checked</c:if> />podawania leków<br>
-    <input name="requirements" type="checkbox" value="t" <c:if test = "${fn:contains(offer.requirements, 't')}">checked</c:if> />transportu<br>
-    <input name="requirements" type="checkbox" value="e" <c:if test = "${fn:contains(offer.requirements, 'e')}">checked</c:if> />badania<br>
-    <input name="requirements" type="checkbox" value="v" <c:if test = "${fn:contains(offer.requirements, 'v')}">checked</c:if> />wizyty u weterynarza<br>
-    <input name="requirements" type="checkbox" value="i" <c:if test = "${fn:contains(offer.requirements, 'i')}">checked</c:if> />choruje<br>
+<jsp:include page="components/header.jsp"/>
 
-    <input type="submit" value="Dalej"/>
-</form:form>
-</body>
-</html>
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Dodaj ofertę
+        <small></small>
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/">PrzechowajZwierzaka.pl</a>
+        </li>
+        <li class="breadcrumb-item active">Dodaj ofertę</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+
+                <form:form modelAttribute="offer" method="post" class="form-horizontal centered-form">
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="type">Rodzaj oferty:</label>
+                        <div class="col-sm-9">
+                            <form:select path="type" class="form-control">
+                                <form:option value="o">Szukam opiekuna</form:option>
+                                <form:option value="s">Zaopiekuję się</form:option>
+                            </form:select>
+                            <small class="form-text text-error"><form:errors path="type"/></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="pet_name">Imię pupila:</label>
+                        <div class="col-sm-9">
+                            <form:input path="pet_name" class="form-control" placeholder="Imię Twojego pupila"/>
+                            <small class="form-text text-error"><form:errors path="pet_name"/></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="pic">Zdjęcie:</label>
+                        <div class="col-sm-9">
+                            <form:input path="pic" class="form-control" placeholder="Na razie tylko ścieżka"/>
+                            <small class="form-text text-error"><form:errors path="pic"/></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="starts">Ważne od:</label>
+                        <div class="col-sm-9">
+                            <form:input path="starts" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss"/>
+                            <small class="form-text text-error"><form:errors path="starts"/></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="ends">Ważne do:</label>
+                        <div class="col-sm-9">
+                            <form:input path="ends" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss"/>
+                            <small class="form-text text-error"><form:errors path="ends"/></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="price">Cena:</label>
+                        <div class="col-sm-9">
+                            <form:input path="price" class="form-control" placeholder="Cena jaką proponujesz"/>
+                            <small class="form-text text-error"><form:errors path="price"/></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="price">Miasto:</label>
+                        <div class="col-sm-9">
+                            <form:input path="city" class="form-control" placeholder="Miasto którego dotyczy oferta"/>
+                            <small class="form-text text-error"><form:errors path="city"/></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="address">Adres:</label>
+                        <div class="col-sm-9">
+                            <form:input path="address" class="form-control"
+                                        placeholder="Ulica, numer ulicy, numer mieszkania"/>
+                            <small class="form-text text-error"><form:errors path="address"/></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="phone">Numer telefonu:</label>
+                        <div class="col-sm-9">
+                            <form:input path="phone" class="form-control" placeholder="Telefon kontaktowy"/>
+                            <small class="form-text text-error"><form:errors path="phone"/></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="email">Email:</label>
+                        <div class="col-sm-9">
+                            <form:input path="email" class="form-control" placeholder="Adres email do kontaktu"/>
+                            <small class="form-text text-error"><form:errors path="email"/></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-3" for="description">Opis oferty:</label>
+                        <div class="col-sm-9">
+                            <form:textarea path="description" class="form-control" rows="3" maxlength="1000"/>
+                            <small class="form-text text-error"><form:errors path="description"/></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            Zwierzęta:
+                        </div>
+
+                        <div class="col">
+                            <div class="form-row">
+
+                                <label class="control-label col-sm-3" for="cats">Koty:</label>
+                                <div class="col-sm-2">
+                                    <input name="cats" type="number" value="0" class="form-control"/>
+                                </div>
+
+                                <div class="col-sm-2"></div>
+
+                                <label class="control-label col-sm-3" for="dogs">Psy:</label>
+                                <div class="col-sm-2">
+                                    <input name="dogs" type="number" value="0" class="form-control"/>
+                                </div>
+
+
+                                <label class="control-label col-sm-3" for="birds">Ptaki:</label>
+                                <div class="col-sm-2">
+                                    <input name="birds" type="number" value="0" class="form-control"/>
+                                </div>
+
+                                <div class="col-sm-2"></div>
+
+                                <label class="control-label col-sm-3" for="fish">Rybki:</label>
+                                <div class="col-sm-2">
+                                    <input name="fish" type="number" value="0" class="form-control"/>
+                                </div>
+
+
+                                <label class="control-label col-sm-3" for="small-rodents">Małe gryzonie:</label>
+                                <div class="col-sm-2">
+                                    <input name="small-rodents" type="number" value="0" class="form-control"/>
+                                </div>
+
+                                <div class="col-sm-2"></div>
+
+                                <label class="control-label col-sm-3" for="big-rodents">Duże gryzonie:</label>
+                                <div class="col-sm-2">
+                                    <input name="big-rodents" type="number" value="0" class="form-control"/>
+                                </div>
+
+
+                                <label class="control-label col-sm-3" for="reptiles">Gady/płazy:</label>
+                                <div class="col-sm-2">
+                                    <input name="reptiles" type="number" value="0" class="form-control"/>
+                                </div>
+
+                                <div class="col-sm-2"></div>
+
+                                <label class="control-label col-sm-3" for="bugs">Owady:</label>
+                                <div class="col-sm-2">
+                                    <input name="bugs" type="number" value="0" class="form-control"/>
+                                </div>
+
+
+                                <label class="control-label col-sm-3" for="horses">Konie:</label>
+                                <div class="col-sm-2">
+                                    <input name="horses" type="number" value="0" class="form-control"/>
+                                </div>
+
+                                <div class="col-sm-2"></div>
+
+                                <label class="control-label col-sm-3" for="misc">Inne:</label>
+                                <div class="col-sm-2">
+                                    <input name="misc" type="number" value="0" class="form-control"/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            Wymagania:
+                        </div>
+
+                        <div class="col">
+                            <div class="form-row">
+
+                                <div class="col-sm-6">
+                                    <input name="requirements" class="form-check-input" type="checkbox" value="f"
+                                           <c:if test="${fn:contains(offer.requirements, 'f')}">checked</c:if> />
+                                    Karmienie
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <input name="requirements" class="form-check-input" type="checkbox" value="w"
+                                           <c:if test="${fn:contains(offer.requirements, 'w')}">checked</c:if> />
+                                    Spacery
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <input name="requirements" class="form-check-input" type="checkbox" value="c"
+                                           <c:if test="${fn:contains(offer.requirements, 'c')}">checked</c:if> />
+                                    Sprzątanie
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <input name="requirements" class="form-check-input" type="checkbox" value="g"
+                                           <c:if test="${fn:contains(offer.requirements, 'g')}">checked</c:if> />
+                                    Pielęgnacja
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <input name="requirements" class="form-check-input" type="checkbox" value="m"
+                                           <c:if test="${fn:contains(offer.requirements, 'm')}">checked</c:if> />
+                                    Podawanie leków
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <input name="requirements" class="form-check-input" type="checkbox" value="t"
+                                           <c:if test="${fn:contains(offer.requirements, 't')}">checked</c:if> />
+                                    Transport
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <input name="requirements" class="form-check-input" type="checkbox" value="e"
+                                           <c:if test="${fn:contains(offer.requirements, 'e')}">checked</c:if> />
+                                    Monitorowanie zdrowia
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <input name="requirements" class="form-check-input" type="checkbox" value="v"
+                                           <c:if test="${fn:contains(offer.requirements, 'v')}">checked</c:if> />
+                                    Wizyta u weterynarza
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <input name="requirements" class="form-check-input" type="checkbox" value="i"
+                                           <c:if test="${fn:contains(offer.requirements, 'i')}">checked</c:if> />
+                                    Zwierzę jest chore
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">Dodaj ofertę</button>
+                        </div>
+                    </div>
+
+                </form:form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<jsp:include page="components/footer.jsp"/>

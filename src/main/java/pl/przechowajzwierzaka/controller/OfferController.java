@@ -28,7 +28,7 @@ public class OfferController {
     @ModelAttribute("requirements")
     public List<String> requirements() { return Arrays.asList("f", "w", "c", "g", "m", "t", "e", "v", "i"); }
 
-    @RequestMapping("/petsitters")
+    @RequestMapping("/sitters")
     public String listOffersPetsitters(Model model) {
         List<Offer> offers = offerRepository.findAllByTypeOrderByStartsDesc("s");
         model.addAttribute("offers", offers);

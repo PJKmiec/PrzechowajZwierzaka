@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginUserPost(Model model, @RequestParam String login, @RequestParam String password, HttpSession session) {
+    public String loginUserPost(Model model, @RequestParam String login, @RequestParam String password, HttpSession session, @RequestParam(value = "rememberMe", required = false) String rememberMe) {
 
         if (StringUtils.isNotBlank(login) && StringUtils.isNotBlank(password)) {
             User user = userRepository.findOneByLogin(login);
@@ -58,6 +58,13 @@ public class UserController {
 
                 if (loginResult.equals("ok")) {
                     session.setAttribute("user", user);
+
+                    if(rememberMe != null) {
+                        session.setMaxInactiveInterval(120*60); // seconds
+                    } else {
+                        session.setMaxInactiveInterval(5*60); // seconds
+                    }
+
                     return "redirect:/";
                 } else if (loginResult.equals("credentials")) {
                     model.addAttribute("user", user);

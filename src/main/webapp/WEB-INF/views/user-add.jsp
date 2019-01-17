@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="login">Hasło:</label>
+                        <label class="control-label col-sm-4" for="password">Hasło:</label>
                         <div class="col-sm-10">
                             <form:password path="password" class="form-control" placeholder="Twoje hasło"/>
                             <form:errors path="login"/><br>
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="login">Email:</label>
+                        <label class="control-label col-sm-4" for="email">Email:</label>
                         <div class="col-sm-10">
                             <form:input path="email" class="form-control" placeholder="Twój adres email"/>
                             <form:errors path="email"/><br>
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="login">Obrazek profilowy:</label>
+                        <label class="control-label col-sm-4" for="pic">Obrazek profilowy:</label>
                         <div class="col-sm-10">
                             <form:input path="pic" class="form-control" placeholder="Na razie tylko ścieżka"/>
                             <form:errors path="pic"/><br>
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="login">Miasto:</label>
+                        <label class="control-label col-sm-4" for="city">Miasto:</label>
                         <div class="col-sm-10">
                             <form:input path="city" class="form-control" placeholder="Twoje miasto zamieszkania"/>
                             <form:errors path="city"/><br>
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="login">Adres:</label>
+                        <label class="control-label col-sm-4" for="address">Adres:</label>
                         <div class="col-sm-10">
                             <form:input path="address" class="form-control" placeholder="Twój adres zamieszkania"/>
                             <form:errors path="address"/><br>
@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="login">Ocena:</label>
+                        <label class="control-label col-sm-4" for="rating">Ocena:</label>
                         <div class="col-sm-10">
                             <input name="rating" type="number" value="10" min="1" max="10"/>
                             <form:errors path="rating"/><br>
@@ -81,9 +81,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-4" for="login">Poziom:</label>
+                        <label class="control-label col-sm-4" for="type">Poziom:</label>
                         <div class="col-sm-10">
-                            <form:select path="type" class="selectpicker">
+                            <form:select path="type" class="form-control">
                                 <form:option value="1">Użytkownik</form:option>
                                 <form:option value="2">Admin</form:option>
                             </form:select>

@@ -20,6 +20,7 @@
     <link href="/resources/css/custom.css" rel="stylesheet">
 
 </head>
+
 <!-- Navigation -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -31,10 +32,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item <c:if test="${fn:contains(pageContext.request.requestURI, 'Owner')}"> active</c:if>">
-                    <a class="nav-link" href="/offer/petsitters">Znajdź opiekuna</a>
+                <li class="nav-item <c:if test="${fn:contains(requestScope['javax.servlet.forward.request_uri'], 'sitters')}"> active</c:if>">
+                    <a class="nav-link" href="/offer/sitters">Znajdź opiekuna</a>
                 </li>
-                <li class="nav-item<c:if test="${fn:contains(pageContext.request.requestURI, 'Sitter')}"> active</c:if>">
+                <li class="nav-item<c:if test="${fn:contains(requestScope['javax.servlet.forward.request_uri'], 'pets')}"> active</c:if>">
                     <a class="nav-link" href="/offer/pets">Zaopiekuj się</a>
                 </li>
                 <li class="nav-item<c:if test="${fn:contains(pageContext.request.requestURI, 'faq')}"> active</c:if>">
