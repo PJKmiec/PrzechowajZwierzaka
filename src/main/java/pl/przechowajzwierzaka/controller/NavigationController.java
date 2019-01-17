@@ -18,16 +18,6 @@ public class NavigationController {
         return "admin";
     }
 
-    // znajdź opiekuna
-    @RequestMapping("/znajdz-opiekuna")
-    public String offersForOwner() { return "offersOwner"; }
-
-    // zostan opiekunem
-    @RequestMapping("/zostan-opiekunem")
-    public String offersForSitter() {
-        return "offersSitter";
-    }
-
     // pytania i odpowiedzi
     @RequestMapping("/pytania-i-odpowiedzi")
     public String faq() {

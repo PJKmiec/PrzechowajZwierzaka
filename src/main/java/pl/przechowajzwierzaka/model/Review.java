@@ -2,7 +2,7 @@ package pl.przechowajzwierzaka.model;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
-import pl.przechowajzwierzaka.filter.nl2br;
+import pl.przechowajzwierzaka.filter.Nl2br;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -117,7 +117,7 @@ public class Review {
     }
 
     public String getDescription() {
-        return nl2br.br(description);
+        return Nl2br.br(description);
     }
 
     public void setDescription(String description) {

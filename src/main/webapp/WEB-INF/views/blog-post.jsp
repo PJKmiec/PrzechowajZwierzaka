@@ -39,22 +39,24 @@
 
             <hr>
 
-            <!-- Comments Form -->
-            <div class="card my-4">
-                <h5 class="card-header">Dodaj komentarz:</h5>
-                <div class="card-body">
+            <c:if test="${sessionScope.user.login!=null}">
+                <!-- Comments Form -->
+                <div class="card my-4">
+                    <h5 class="card-header">Dodaj komentarz:</h5>
+                    <div class="card-body">
 
-                    <form:form modelAttribute="comment" method="post" action="/comments/blog/${post.id}">
-                        <div class="form-group">
-                            <span class="form-error">${errorMessage}</span>
-                            <form:textarea path="text" class="form-control" rows="3"/><br>
-                            <form:errors path="text"/>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Skomentuj &raquo;</button>
-                    </form:form>
+                        <form:form modelAttribute="comment" method="post" action="/comments/blog/${post.id}">
+                            <div class="form-group">
+                                <span class="form-error">${errorMessage}</span>
+                                <form:textarea path="text" class="form-control" rows="3" maxlength="300"/><br>
+                                <form:errors path="text"/>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Skomentuj &raquo;</button>
+                        </form:form>
 
+                    </div>
                 </div>
-            </div>
+            </c:if>
 
             <c:forEach items="${comments}" var="item">
 
@@ -65,18 +67,27 @@
                    <c:otherwise>http://placehold.it/50x50</c:otherwise>
                     </c:choose>" alt="" width="50" height="50">
                     <div class="media-body">
-                        <div class="upper-toolbar">
-                            <a data-toggle="collapse" href="#collapseExample${item.id}" role="button" aria-expanded="false" aria-controls="collapseExample">Odpowiedz</a>
-                            <c:choose>
-                                <c:when test="${item.status==0}">| <a
-                                        href="/comments/flag/${item.id}">Zgłoś</a></c:when>
-                                <c:when test="${item.status==1}">| Zgłoszono</c:when>
-                            </c:choose>
+                        <c:if test="${sessionScope.user.login!=null}">
+                            <div class="upper-toolbar">
+                                <a data-toggle="collapse" href="#collapseExample${item.id}" role="button"
+                                   aria-expanded="false" aria-controls="collapseExample"
+                                   class="icon icon-small icon-reply"
+                                   title="Odpowiedz"></a>
+                                <c:choose>
+                                    <c:when test="${item.status==0}"><a
+                                            href="/comments/flag/${item.id}" class="icon icon-small icon-report"
+                                            title="Zgłoś"></a></c:when>
+                                    <c:when test="${item.status==1}">
+                                        <div class="icon icon-small icon-report icon-disabled" title="Zgłoszono"></div>
+                                    </c:when>
+                                </c:choose>
 
-                            <c:if test="${sessionScope.user.type == '2'}">
-                                | <a href="/comments/delete/${item.id}">Usuń</a>
-                            </c:if>
-                        </div>
+                                <c:if test="${sessionScope.user.type == '2'}">
+                                    <a href="/comments/delete/${item.id}" class="icon icon-small icon-delete"
+                                       title="Usuń"></a>
+                                </c:if>
+                            </div>
+                        </c:if>
                         <h5 class="mt-0">${item.user.login}</h5>
                         <h6 class="small-date">- ${item.created} -</h6>
                             ${item.text}
@@ -86,7 +97,7 @@
                             <div class="card card-body">
                                 <form:form modelAttribute="reply" method="post" action="/reply/${item.id}">
                                     <div class="form-group">
-                                        <form:textarea path="text" class="form-control" rows="3"/><br>
+                                        <form:textarea path="text" class="form-control" rows="3" maxlength="300"/><br>
                                         <form:errors path="text"/>
                                     </div>
                                     <button type="submit" class="btn btn-outline-primary">Odpowiedz &raquo;</button>
@@ -105,18 +116,27 @@
                    <c:otherwise>http://placehold.it/50x50</c:otherwise>
                     </c:choose>" alt="" width="50" height="50">
                                     <div class="media-body">
+                                        <c:if test="${sessionScope.user.login!=null}">
                                         <div class="upper-toolbar">
-                                            <a data-toggle="collapse" href="#collapseExample${r.id}" role="button" aria-expanded="false" aria-controls="collapseExample">Odpowiedz</a>
+                                            <a data-toggle="collapse" href="#collapseExample${r.id}" role="button"
+                                               aria-expanded="false" aria-controls="collapseExample"
+                                               class="icon icon-small icon-reply" title="Odpowiedz"></a>
                                             <c:choose>
-                                                <c:when test="${r.status==0}">| <a
-                                                        href="/reply/flag/${r.id}">Zgłoś</a></c:when>
-                                                <c:when test="${r.status==1}">| Zgłoszono</c:when>
+                                                <c:when test="${r.status==0}"><a
+                                                        href="/reply/flag/${r.id}" class="icon icon-small icon-report"
+                                                        title="Zgłoś"></a></c:when>
+                                                <c:when test="${r.status==1}">
+                                                    <div class="icon icon-small icon-report icon-disabled"
+                                                         title="Zgłoszono"></div>
+                                                </c:when>
                                             </c:choose>
 
                                             <c:if test="${sessionScope.user.type == '2'}">
-                                                | <a href="/reply/delete/${r.id}">Usuń</a>
+                                                <a href="/reply/delete/${r.id}" class="icon-small icon icon-delete"
+                                                   title="Usuń"></a>
                                             </c:if>
                                         </div>
+                                        </c:if>
 
                                         <h5 class="mt-0">${r.user.login}</h5>
                                         <h6 class="small-date">- ${item.created} -</h6>
@@ -125,12 +145,15 @@
                                         <!-- Hidden reply form -->
                                         <div class="collapse" id="collapseExample${r.id}">
                                             <div class="card card-body">
-                                                <form:form modelAttribute="reply" method="post" action="/reply/${item.id}">
+                                                <form:form modelAttribute="reply" method="post"
+                                                           action="/reply/${item.id}">
                                                     <div class="form-group">
                                                         <form:textarea path="text" class="form-control" rows="3"/><br>
                                                         <form:errors path="text"/>
                                                     </div>
-                                                    <button type="submit" class="btn btn-outline-primary">Odpowiedz &raquo;</button>
+                                                    <button type="submit" class="btn btn-outline-primary">Odpowiedz
+                                                        &raquo;
+                                                    </button>
                                                 </form:form>
                                             </div>
                                         </div>
@@ -143,16 +166,6 @@
                     </div>
                 </div>
                 <hr>
-
-                <%--<tr>--%>
-                <%--<td></td>--%>
-                <%--<td></td>--%>
-                <%--<td>${item.created}</td>--%>
-                <%--<td>${item.status}</td>--%>
-                <%--<td>--%>
-
-                <%--</td>--%>
-                <%--</tr>--%>
 
             </c:forEach>
 

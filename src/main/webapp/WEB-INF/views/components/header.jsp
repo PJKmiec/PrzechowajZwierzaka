@@ -32,10 +32,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item <c:if test="${fn:contains(pageContext.request.requestURI, 'Owner')}"> active</c:if>">
-                    <a class="nav-link" href="/znajdz-opiekuna">Znajdź opiekuna</a>
+                    <a class="nav-link" href="/offer/petsitters">Znajdź opiekuna</a>
                 </li>
                 <li class="nav-item<c:if test="${fn:contains(pageContext.request.requestURI, 'Sitter')}"> active</c:if>">
-                    <a class="nav-link" href="/zaopiekuj-sie">Zaopiekuj się</a>
+                    <a class="nav-link" href="/offer/pets">Zaopiekuj się</a>
                 </li>
                 <li class="nav-item<c:if test="${fn:contains(pageContext.request.requestURI, 'faq')}"> active</c:if>">
                     <a class="nav-link" href="/pytania-i-odpowiedzi">Pytania i odpowiedzi</a>

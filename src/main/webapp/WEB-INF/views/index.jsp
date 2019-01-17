@@ -86,6 +86,8 @@
         <div class="col-lg-4 mb-4">
             <div class="card h-100">
                 <h4 class="card-header">Znajdź opiekuna</h4>
+                <a href="/znajdz-opiekuna"><img class="card-img-top" src="/resources/img/owner.jpg" alt=""></a>
+
                 <div class="card-body">
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
                         necessitatibus neque.</p>
@@ -98,6 +100,7 @@
         <div class="col-lg-4 mb-4">
             <div class="card h-100">
                 <h4 class="card-header">Zostań opiekunem</h4>
+                <a href="#"><img class="card-img-top" src="/resources/img/sitter.jpg" alt=""></a>
                 <div class="card-body">
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos,
                         nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque
@@ -138,6 +141,8 @@
     </div>
     <!-- /.row -->
 
+    <hr>
+
     <!-- Portfolio Section -->
     <h2>Szukają opiekuna</h2>
 
@@ -149,7 +154,8 @@
                     <h4 class="card-title">
                         <a href="#">Śmigacz</a>
                     </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
                         aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt,
                         dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
                 </div>
@@ -237,6 +243,8 @@
         </div>
     </div>
     <!-- /.row -->
+
+    <hr>
 
     <!-- Features Section -->
     <div class="row">

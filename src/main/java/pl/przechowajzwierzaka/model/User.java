@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.mindrot.jbcrypt.BCrypt;
-import pl.przechowajzwierzaka.filter.nl2br;
+import pl.przechowajzwierzaka.filter.Nl2br;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -143,7 +143,7 @@ public class User {
     }
 
     public String getBio() {
-        return nl2br.br(bio);
+        return Nl2br.br(bio);
     }
 
     public void setBio(String bio) {

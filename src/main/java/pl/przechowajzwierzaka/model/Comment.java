@@ -2,7 +2,7 @@ package pl.przechowajzwierzaka.model;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
-import pl.przechowajzwierzaka.filter.nl2br;
+import pl.przechowajzwierzaka.filter.Nl2br;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -133,7 +133,7 @@ public class Comment {
     }
 
     public String getText() {
-        return nl2br.br(text);
+        return Nl2br.br(text);
     }
 
     public void setText(String text) {

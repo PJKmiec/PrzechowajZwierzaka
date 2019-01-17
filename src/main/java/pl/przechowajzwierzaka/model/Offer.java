@@ -2,7 +2,8 @@ package pl.przechowajzwierzaka.model;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
-import pl.przechowajzwierzaka.filter.nl2br;
+import pl.przechowajzwierzaka.filter.Nl2br;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -96,6 +97,10 @@ public class Offer {
     @NotBlank
     private String requirements;
 
+    @Column(length = 1)
+    @NotBlank
+    private String type;
+
     @ManyToOne(cascade = {MERGE})
     @JoinColumn(name = "claimed_by")
     private User claimant;
@@ -107,7 +112,7 @@ public class Offer {
 
     public Offer() {}
 
-    public Offer(User user, String created, String edited, double price, String starts, String ends, String city, String address, String phone, String email, String pic, String pet_name, String description, int cats, int dogs, int fish, int birds, int reptiles, int small_rodents, int big_rodents, int bugs, int horses, int misc, String requirements, User claimant, int status) {
+    public Offer(User user, String created, String edited, double price, String starts, String ends, String city, String address, String phone, String email, String pic, String pet_name, String description, int cats, int dogs, int fish, int birds, int reptiles, int small_rodents, int big_rodents, int bugs, int horses, int misc, String requirements, String type, User claimant, int status) {
         this.user = user;
         this.created = created;
         this.edited = edited;
@@ -132,6 +137,7 @@ public class Offer {
         this.horses = horses;
         this.misc = misc;
         this.requirements = requirements;
+        this.type = type;
         this.claimant = claimant;
         this.status = status;
     }
@@ -243,7 +249,7 @@ public class Offer {
     }
 
     public String getDescription() {
-        return nl2br.br(description);
+        return Nl2br.br(description);
     }
 
     public void setDescription(String description) {
@@ -353,4 +359,8 @@ public class Offer {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    public String getType() { return type; }
+
+    public void setType(String type) { this.type = type; }
 }

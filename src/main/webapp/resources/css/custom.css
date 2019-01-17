@@ -9,6 +9,13 @@ a.navbar-brand {
     width: 300px;
     height: 30px;
     background: transparent url('../img/przechowajzwierzaka.png') no-repeat top center;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+
+a.navbar-brand:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
 }
 
 .nav-item {
@@ -38,10 +45,6 @@ header {
 .carousel-caption p {
     font-size: 1.5rem;
     text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5), 0px 0px 5px rgba(0, 0, 0, 0.6);
-}
-
-.h-100 {
-    height: auto !important;
 }
 
 span.dropdown-item, span.dropdown-item:hover {
@@ -107,3 +110,36 @@ h6.small-date{font-size: 12px; color: #6c757d;}
 .upper-toolbar{position: absolute; top: 0px; right: 0px; font-size: 14px;}
 
 .dropdown-item:hover {color: #fff; background-color: #007bff;}
+
+.icon {display: block; width: 40px; height: 40px; border-radius: 20px; background-color: #007bff; background-repeat: no-repeat; background-position: center; margin: 3px; float: left;}
+.icon-disabled {background-color: #5e5e5e;}
+.icon-small { width: 32px; height: 32px; border-radius: 16px;}
+a.icon:hover{background-color: #005bbe;}
+
+.icon-big-rodent {background-image: url('../img/icons/icon-big-rodent.png');}
+.icon-bird {background-image: url('../img/icons/icon-bird.png');}
+.icon-bug {background-image: url('../img/icons/icon-bug.png');}
+.icon-calendar {background-image: url('../img/icons/icon-calendar.png');}
+.icon-cat {background-image: url('../img/icons/icon-cat.png');}
+.icon-clean {background-image: url('../img/icons/icon-clean.png');}
+.icon-delete {background-image: url('../img/icons/icon-delete.png');}
+.icon-dog {background-image: url('../img/icons/icon-dog.png');}
+.icon-edit {background-image: url('../img/icons/icon-edit.png');}
+.icon-examine {background-image: url('../img/icons/icon-examine.png');}
+.icon-feed {background-image: url('../img/icons/icon-feed.png');}
+.icon-fish {background-image: url('../img/icons/icon-fish.png');}
+.icon-groom {background-image: url('../img/icons/icon-groom.png');}
+.icon-help {background-image: url('../img/icons/icon-help.png');}
+.icon-horse {background-image: url('../img/icons/icon-horse.png');}
+.icon-ill {background-image: url('../img/icons/icon-ill.png');}
+.icon-medicate {background-image: url('../img/icons/icon-medicate.png');}
+.icon-misc {background-image: url('../img/icons/icon-misc.png');}
+.icon-reply {background-image: url('../img/icons/icon-reply.png');}
+.icon-report {background-image: url('../img/icons/icon-report.png');}
+.icon-reptile {background-image: url('../img/icons/icon-reptile.png');}
+.icon-small-rodent {background-image: url('../img/icons/icon-small-rodent.png');}
+.icon-transport {background-image: url('../img/icons/icon-transport.png');}
+.icon-vet {background-image: url('../img/icons/icon-vet.png');}
+.icon-walk {background-image: url('../img/icons/icon-walk.png');}
+
+

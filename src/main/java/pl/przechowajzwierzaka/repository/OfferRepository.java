@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface OfferRepository extends JpaRepository<Offer, Long> {
     List<Offer> findFirst6ByOrderByIdDesc();
+    List<Offer> findAllByTypeOrderByStartsDesc(String type);
 
 }

@@ -28,6 +28,20 @@ public class OfferController {
     @ModelAttribute("requirements")
     public List<String> requirements() { return Arrays.asList("f", "w", "c", "g", "m", "t", "e", "v", "i"); }
 
+    @RequestMapping("/petsitters")
+    public String listOffersPetsitters(Model model) {
+        List<Offer> offers = offerRepository.findAllByTypeOrderByStartsDesc("s");
+        model.addAttribute("offers", offers);
+        return "offers";
+    }
+
+    @RequestMapping("/pets")
+    public String listOffersPets(Model model) {
+        List<Offer> offers = offerRepository.findAllByTypeOrderByStartsDesc("o");
+        model.addAttribute("offers", offers);
+        return "offers";
+    }
+
     @RequestMapping("/edit")
     public String listOffers(Model model) {
         List<Offer> offers = offerRepository.findAll();
