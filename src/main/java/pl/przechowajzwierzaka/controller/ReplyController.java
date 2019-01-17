@@ -36,10 +36,11 @@ public class ReplyController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public String addReplyPost(@PathVariable long id, @Valid Reply reply, BindingResult result, @SessionAttribute User user, @RequestParam String referer) {
+    public String addReplyPost(@PathVariable long id, @Valid Reply reply, BindingResult result, @SessionAttribute User user, HttpServletRequest request) {
+        String referer = request.getHeader("Referer");
+
         if (result.hasErrors()) {
-            System.out.println(result.getAllErrors());
-            return "reply-add";
+            return "redirect:"+ referer;
         }
 
         Comment comment = commentRepository.findOne(id);

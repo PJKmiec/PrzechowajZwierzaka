@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.przechowajzwierzaka.model.Blog;
 import pl.przechowajzwierzaka.model.Comment;
+import pl.przechowajzwierzaka.model.Reply;
 import pl.przechowajzwierzaka.repository.BlogRepository;
 import pl.przechowajzwierzaka.repository.CommentRepository;
 
@@ -41,6 +42,7 @@ public class BlogController {
         model.addAttribute("post", post);
         model.addAttribute("comments", comments);
         model.addAttribute("comment", new Comment());
+        model.addAttribute("reply", new Reply());
         return "blog-post";
     }
 

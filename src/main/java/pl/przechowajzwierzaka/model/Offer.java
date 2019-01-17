@@ -2,6 +2,7 @@ package pl.przechowajzwierzaka.model;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+import pl.przechowajzwierzaka.filter.nl2br;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -242,7 +243,7 @@ public class Offer {
     }
 
     public String getDescription() {
-        return description;
+        return nl2br.br(description);
     }
 
     public void setDescription(String description) {

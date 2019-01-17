@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="components/header.jsp"/>
-<c:set var="newline" value="<%= \"\n\" %>"/>
 
 <!-- Page Content -->
 <div class="container">
@@ -51,7 +50,7 @@
                             <form:textarea path="text" class="form-control" rows="3"/><br>
                             <form:errors path="text"/>
                         </div>
-                        <button type="submit" class="btn btn-primary">Wyślij &raquo;</button>
+                        <button type="submit" class="btn btn-primary">Skomentuj &raquo;</button>
                     </form:form>
 
                 </div>
@@ -61,10 +60,13 @@
 
                 <!-- Comment -->
                 <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                    <img class="d-flex mr-3 rounded-circle" src="<c:choose>
+                   <c:when test="${not empty item.user.pic}">/resources/img/${item.user.pic}</c:when>
+                   <c:otherwise>http://placehold.it/50x50</c:otherwise>
+                    </c:choose>" alt="" width="50" height="50">
                     <div class="media-body">
                         <div class="upper-toolbar">
-                            <a href="/reply/${item.id}">Odpowiedz</a>
+                            <a data-toggle="collapse" href="#collapseExample${item.id}" role="button" aria-expanded="false" aria-controls="collapseExample">Odpowiedz</a>
                             <c:choose>
                                 <c:when test="${item.status==0}">| <a
                                         href="/comments/flag/${item.id}">Zgłoś</a></c:when>
@@ -77,7 +79,20 @@
                         </div>
                         <h5 class="mt-0">${item.user.login}</h5>
                         <h6 class="small-date">- ${item.created} -</h6>
-                            ${fn:replace(item.text, newline, "<br />")}
+                            ${item.text}
+
+                        <!-- Hidden reply form -->
+                        <div class="collapse" id="collapseExample${item.id}">
+                            <div class="card card-body">
+                                <form:form modelAttribute="reply" method="post" action="/reply/${item.id}">
+                                    <div class="form-group">
+                                        <form:textarea path="text" class="form-control" rows="3"/><br>
+                                        <form:errors path="text"/>
+                                    </div>
+                                    <button type="submit" class="btn btn-outline-primary">Odpowiedz &raquo;</button>
+                                </form:form>
+                            </div>
+                        </div>
 
                         <c:if test="${not empty item.replies}">
                             <c:forEach items="${item.replies}" var="r">
@@ -85,10 +100,13 @@
                                 <!-- Reply -->
                                 <hr>
                                 <div class="media mt-4">
-                                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                                    <img class="d-flex mr-3 rounded-circle" src="<c:choose>
+                   <c:when test="${not empty r.user.pic}">/resources/img/${r.user.pic}</c:when>
+                   <c:otherwise>http://placehold.it/50x50</c:otherwise>
+                    </c:choose>" alt="" width="50" height="50">
                                     <div class="media-body">
                                         <div class="upper-toolbar">
-                                            <a href="/reply/${item.id}">Odpowiedz</a>
+                                            <a data-toggle="collapse" href="#collapseExample${r.id}" role="button" aria-expanded="false" aria-controls="collapseExample">Odpowiedz</a>
                                             <c:choose>
                                                 <c:when test="${r.status==0}">| <a
                                                         href="/reply/flag/${r.id}">Zgłoś</a></c:when>
@@ -102,8 +120,20 @@
 
                                         <h5 class="mt-0">${r.user.login}</h5>
                                         <h6 class="small-date">- ${item.created} -</h6>
-                                            ${fn:replace(r.text, newline, "<br />")}
+                                            ${r.text}
 
+                                        <!-- Hidden reply form -->
+                                        <div class="collapse" id="collapseExample${r.id}">
+                                            <div class="card card-body">
+                                                <form:form modelAttribute="reply" method="post" action="/reply/${item.id}">
+                                                    <div class="form-group">
+                                                        <form:textarea path="text" class="form-control" rows="3"/><br>
+                                                        <form:errors path="text"/>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-outline-primary">Odpowiedz &raquo;</button>
+                                                </form:form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
