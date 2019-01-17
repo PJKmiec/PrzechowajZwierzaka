@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="control-label col-sm-3" for="price">Cena:</label>
+                        <label class="control-label col-sm-3" for="price">Cena za dzień:</label>
                         <div class="col-sm-9">
                             <form:input path="price" class="form-control" placeholder="Cena jaką proponujesz"/>
                             <small class="form-text text-error"><form:errors path="price"/></small>
@@ -77,9 +77,16 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="control-label col-sm-3" for="price">Miasto:</label>
+                        <label class="control-label col-sm-3" for="city">Miasto:</label>
                         <div class="col-sm-9">
-                            <form:input path="city" class="form-control" placeholder="Miasto którego dotyczy oferta"/>
+                            <c:choose>
+                                <c:when test="${empty offer.city}">
+                                    <form:input path="city" class="form-control" value="${sessionScope.user.city}"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <form:input path="city" class="form-control" placeholder="Miasto którego dotyczy oferta"/>
+                                </c:otherwise>
+                            </c:choose>
                             <small class="form-text text-error"><form:errors path="city"/></small>
                         </div>
                     </div>
@@ -87,8 +94,14 @@
                     <div class="form-group row">
                         <label class="control-label col-sm-3" for="address">Adres:</label>
                         <div class="col-sm-9">
-                            <form:input path="address" class="form-control"
-                                        placeholder="Ulica, numer ulicy, numer mieszkania"/>
+                            <c:choose>
+                                <c:when test="${empty offer.address}">
+                                    <form:input path="address" class="form-control" value="${sessionScope.user.address}"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <form:input path="address" class="form-control" placeholder="Adres (ulica, nr ulicy, nr mieszkania/domu)"/>
+                                </c:otherwise>
+                            </c:choose>
                             <small class="form-text text-error"><form:errors path="address"/></small>
                         </div>
                     </div>
@@ -96,7 +109,14 @@
                     <div class="form-group row">
                         <label class="control-label col-sm-3" for="phone">Numer telefonu:</label>
                         <div class="col-sm-9">
-                            <form:input path="phone" class="form-control" placeholder="Telefon kontaktowy"/>
+                            <c:choose>
+                                <c:when test="${empty offer.phone}">
+                                    <form:input path="phone" class="form-control" value="${sessionScope.user.phone}"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <form:input path="phone" class="form-control" placeholder="Telefon kontaktowy"/>
+                                </c:otherwise>
+                            </c:choose>
                             <small class="form-text text-error"><form:errors path="phone"/></small>
                         </div>
                     </div>
@@ -104,7 +124,15 @@
                     <div class="form-group row">
                         <label class="control-label col-sm-3" for="email">Email:</label>
                         <div class="col-sm-9">
-                            <form:input path="email" class="form-control" placeholder="Adres email do kontaktu"/>
+                            <c:choose>
+                                <c:when test="${empty offer.email}">
+                                    <form:input path="email" class="form-control" value="${sessionScope.user.email}"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <form:input path="email" class="form-control" placeholder="Adres email do kontaktu"/>
+                                </c:otherwise>
+                            </c:choose>
+
                             <small class="form-text text-error"><form:errors path="email"/></small>
                         </div>
                     </div>
@@ -126,67 +154,67 @@
                             <div class="form-row">
 
                                 <label class="control-label col-sm-3" for="cats">Koty:</label>
-                                <div class="col-sm-2">
-                                    <input name="cats" type="number" value="0" class="form-control"/>
+                                <div class="col-sm-2"><form:input path="cats" class="form-control"/>
+                                    <small class="form-text text-error"><form:errors path="cats"/></small>
                                 </div>
 
                                 <div class="col-sm-2"></div>
 
                                 <label class="control-label col-sm-3" for="dogs">Psy:</label>
-                                <div class="col-sm-2">
-                                    <input name="dogs" type="number" value="0" class="form-control"/>
+                                <div class="col-sm-2"><form:input path="dogs" class="form-control"/>
+                                    <small class="form-text text-error"><form:errors path="dogs"/></small>
                                 </div>
 
 
                                 <label class="control-label col-sm-3" for="birds">Ptaki:</label>
-                                <div class="col-sm-2">
-                                    <input name="birds" type="number" value="0" class="form-control"/>
+                                <div class="col-sm-2"><form:input path="birds" class="form-control"/>
+                                    <small class="form-text text-error"><form:errors path="birds"/></small>
                                 </div>
 
                                 <div class="col-sm-2"></div>
 
                                 <label class="control-label col-sm-3" for="fish">Rybki:</label>
-                                <div class="col-sm-2">
-                                    <input name="fish" type="number" value="0" class="form-control"/>
+                                <div class="col-sm-2"><form:input path="fish" class="form-control"/>
+                                    <small class="form-text text-error"><form:errors path="fish"/></small>
                                 </div>
 
 
-                                <label class="control-label col-sm-3" for="small-rodents">Małe gryzonie:</label>
-                                <div class="col-sm-2">
-                                    <input name="small-rodents" type="number" value="0" class="form-control"/>
+                                <label class="control-label col-sm-3" for="small_rodents">Małe gryzonie:</label>
+                                <div class="col-sm-2"><form:input path="small_rodents" class="form-control"/>
+                                    <small class="form-text text-error"><form:errors path="small_rodents"/></small>
                                 </div>
 
                                 <div class="col-sm-2"></div>
 
-                                <label class="control-label col-sm-3" for="big-rodents">Duże gryzonie:</label>
-                                <div class="col-sm-2">
-                                    <input name="big-rodents" type="number" value="0" class="form-control"/>
+                                <label class="control-label col-sm-3" for="big_rodents">Duże gryzonie:</label>
+                                <div class="col-sm-2"><form:input path="big_rodents" class="form-control"/>
+                                    <small class="form-text text-error"><form:errors path="big_rodents"/></small>
                                 </div>
 
 
                                 <label class="control-label col-sm-3" for="reptiles">Gady/płazy:</label>
-                                <div class="col-sm-2">
-                                    <input name="reptiles" type="number" value="0" class="form-control"/>
+                                <div class="col-sm-2"><form:input path="reptiles" class="form-control"/>
+                                    <small class="form-text text-error"><form:errors path="reptiles"/></small>
                                 </div>
 
                                 <div class="col-sm-2"></div>
 
                                 <label class="control-label col-sm-3" for="bugs">Owady:</label>
-                                <div class="col-sm-2">
-                                    <input name="bugs" type="number" value="0" class="form-control"/>
+                                <div class="col-sm-2"><form:input path="bugs" class="form-control"/>
+                                    <small class="form-text text-error"><form:errors path="bugs"/></small>
                                 </div>
 
 
                                 <label class="control-label col-sm-3" for="horses">Konie:</label>
-                                <div class="col-sm-2">
-                                    <input name="horses" type="number" value="0" class="form-control"/>
+                                <div class="col-sm-2"><form:input path="horses" class="form-control"/>
+                                    <small class="form-text text-error"><form:errors path="horses"/></small>
                                 </div>
 
                                 <div class="col-sm-2"></div>
 
                                 <label class="control-label col-sm-3" for="misc">Inne:</label>
-                                <div class="col-sm-2">
-                                    <input name="misc" type="number" value="0" class="form-control"/>
+                                <div class="col-sm-2"><form:input path="misc" class="form-control"/>
+                                    <small class="form-text text-error"><form:errors path="misc"/></small>
                                 </div>
 
                             </div>

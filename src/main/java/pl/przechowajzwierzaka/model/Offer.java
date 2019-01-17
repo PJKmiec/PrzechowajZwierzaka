@@ -6,10 +6,7 @@ import pl.przechowajzwierzaka.filter.Nl2br;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 import static javax.persistence.CascadeType.*;
@@ -65,33 +62,43 @@ public class Offer {
     private String description;
 
     @Column(columnDefinition = "TINYINT UNSIGNED")
+    @Digits(integer=3, fraction=0, message = "Dozwolone są tylko liczby")
     private int cats;
 
     @Column(columnDefinition = "TINYINT UNSIGNED")
+    @Digits(integer=3, fraction=0, message = "Dozwolone są tylko liczby")
     private int dogs;
 
     @Column(columnDefinition = "TINYINT UNSIGNED")
+    @Digits(integer=3, fraction=0, message = "Dozwolone są tylko liczby")
     private int fish;
 
     @Column(columnDefinition = "TINYINT UNSIGNED")
+    @Digits(integer=3, fraction=0, message = "Dozwolone są tylko liczby")
     private int birds;
 
     @Column(columnDefinition = "TINYINT UNSIGNED")
+    @Digits(integer=3, fraction=0, message = "Dozwolone są tylko liczby")
     private int reptiles;
 
     @Column(columnDefinition = "TINYINT UNSIGNED")
+    @Digits(integer=3, fraction=0, message = "Dozwolone są tylko liczby")
     private int small_rodents;
 
     @Column(columnDefinition = "TINYINT UNSIGNED")
+    @Digits(integer=3, fraction=0, message = "Dozwolone są tylko liczby")
     private int big_rodents;
 
     @Column(columnDefinition = "TINYINT UNSIGNED")
+    @Digits(integer=3, fraction=0, message = "Dozwolone są tylko liczby")
     private int bugs;
 
     @Column(columnDefinition = "TINYINT UNSIGNED")
+    @Digits(integer=3, fraction=0, message = "Dozwolone są tylko liczby")
     private int horses;
 
     @Column(columnDefinition = "TINYINT UNSIGNED")
+    @Digits(integer=3, fraction=0, message = "Dozwolone są tylko liczby")
     private int misc;
 
     @Column(length = 20, nullable = false)

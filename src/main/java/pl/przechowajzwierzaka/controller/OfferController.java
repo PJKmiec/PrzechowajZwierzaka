@@ -6,8 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.przechowajzwierzaka.model.Comment;
 import pl.przechowajzwierzaka.model.Offer;
+import pl.przechowajzwierzaka.model.Reply;
 import pl.przechowajzwierzaka.model.User;
+import pl.przechowajzwierzaka.repository.CommentRepository;
 import pl.przechowajzwierzaka.repository.OfferRepository;
 import pl.przechowajzwierzaka.repository.UserRepository;
 
@@ -25,6 +28,9 @@ public class OfferController {
     @Autowired
     private OfferRepository offerRepository;
 
+    @Autowired
+    private CommentRepository commentRepository;
+
     @ModelAttribute("requirements")
     public List<String> requirements() { return Arrays.asList("f", "w", "c", "g", "m", "t", "e", "v", "i"); }
 
@@ -41,6 +47,18 @@ public class OfferController {
         model.addAttribute("offers", offers);
         return "offers";
     }
+
+    @RequestMapping("/see/{id}")
+    public String seeOffer(@PathVariable long id, Model model) {
+        Offer offer = offerRepository.findOne(id);
+        model.addAttribute(offer);
+        List<Comment> comments = commentRepository.findAllByTypeAndOfferOrderByIdDesc("o", offer);
+        model.addAttribute("comments", comments);
+        model.addAttribute("comment", new Comment());
+        model.addAttribute("reply", new Reply());
+        return "offer-details";
+    }
+
 
     @RequestMapping("/edit")
     public String listOffers(Model model) {

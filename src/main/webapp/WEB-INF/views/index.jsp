@@ -144,7 +144,7 @@
     <hr>
 
     <!-- Portfolio Section -->
-    <h2>Szukają opiekuna</h2>
+    <h2>Szukają opiekuna <small><a href="/offers/pets">Zobacz wszystkie &raquo;</a></small></h2>
 
     <div class="row">
         <div class="col-lg-4 col-sm-6 portfolio-item">
