@@ -28,7 +28,7 @@
                         <label class="control-label col-sm-4" for="login">Login:</label>
                         <div class="col-sm-10">
                             <form:input path="login" class="form-control" placeholder="Twój login"/>
-                            <form:errors path="login"/><br>
+                            <small class="form-text text-error"><form:errors path="login"/></small>
                         </div>
                     </div>
 
@@ -36,7 +36,7 @@
                         <label class="control-label col-sm-4" for="password">Hasło:</label>
                         <div class="col-sm-10">
                             <form:password path="password" class="form-control" placeholder="Twoje hasło"/>
-                            <form:errors path="login"/><br>
+                            <small class="form-text text-error"><form:errors path="password"/></small>
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@
                         <label class="control-label col-sm-4" for="email">Email:</label>
                         <div class="col-sm-10">
                             <form:input path="email" class="form-control" placeholder="Twój adres email"/>
-                            <form:errors path="email"/><br>
+                            <small class="form-text text-error"><form:errors path="email"/></small>
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@
                         <label class="control-label col-sm-4" for="pic">Obrazek profilowy:</label>
                         <div class="col-sm-10">
                             <form:input path="pic" class="form-control" placeholder="Na razie tylko ścieżka"/>
-                            <form:errors path="pic"/><br>
+                            <small class="form-text text-error"><form:errors path="pic"/></small>
                         </div>
                     </div>
 
@@ -60,7 +60,7 @@
                         <label class="control-label col-sm-4" for="city">Miasto:</label>
                         <div class="col-sm-10">
                             <form:input path="city" class="form-control" placeholder="Twoje miasto zamieszkania"/>
-                            <form:errors path="city"/><br>
+                            <small class="form-text text-error"><form:errors path="city"/></small>
                         </div>
                     </div>
 
@@ -68,7 +68,7 @@
                         <label class="control-label col-sm-4" for="address">Adres:</label>
                         <div class="col-sm-10">
                             <form:input path="address" class="form-control" placeholder="Twój adres zamieszkania"/>
-                            <form:errors path="address"/><br>
+                            <small class="form-text text-error"><form:errors path="address"/></small>
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@
                         <label class="control-label col-sm-4" for="rating">Ocena:</label>
                         <div class="col-sm-10">
                             <input name="rating" type="number" value="10" min="1" max="10"/>
-                            <form:errors path="rating"/><br>
+                            <small class="form-text text-error"><form:errors path="rating"/></small>
                         </div>
                     </div>
 
@@ -87,7 +87,7 @@
                                 <form:option value="1">Użytkownik</form:option>
                                 <form:option value="2">Admin</form:option>
                             </form:select>
-                            <form:errors path="type"/><br>
+                            <small class="form-text text-error"><form:errors path="type"/></small>
                         </div>
                     </div>
 

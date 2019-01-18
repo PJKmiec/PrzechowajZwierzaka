@@ -125,7 +125,10 @@
 
             <a href="/offer/take/${offer.id}" class="btn btn-primary btn-lg">Zgłoś się &raquo;</a>
 
+            <hr>
+
             <c:if test="${sessionScope.user.login!=null}">
+
                 <!-- Comments Form -->
                 <div class="card my-4">
                     <h5 class="card-header">Dodaj komentarz:</h5>
