@@ -131,7 +131,7 @@
                     <h5 class="card-header">Dodaj komentarz:</h5>
                     <div class="card-body">
 
-                        <form:form modelAttribute="comment" method="post" action="/comments/blog/${offer.id}">
+                        <form:form modelAttribute="comment" method="post" action="/comments/offer/${offer.id}">
                             <div class="form-group">
                                 <span class="form-error">${errorMessage}</span>
                                 <form:textarea path="text" class="form-control" rows="3" maxlength="300"/><br>

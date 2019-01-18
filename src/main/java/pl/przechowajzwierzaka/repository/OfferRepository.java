@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface OfferRepository extends JpaRepository<Offer, Long> {
     List<Offer> findFirst6ByTypeOrderByIdDesc(String type);
-    List<Offer> findAllByTypeOrderByStartsDesc(String type);
+    List<Offer> findAllByTypeOrderByIdDesc(String type);
 
     List<Offer> findAllByRequirementsContainingOrderByIdDesc(String requirement);
     List<Offer> findAllByCityContainingOrderByIdDesc(String city);
@@ -22,10 +22,10 @@ public interface OfferRepository extends JpaRepository<Offer, Long> {
     List<Offer> findAllByHorsesGreaterThan(int number);
     List<Offer> findAllByMiscGreaterThan(int number);
 
-    @Query(value = "SELECT * FROM offers WHERE small_rodents > 0", nativeQuery = true)
+    @Query(value = "SELECT * FROM offers WHERE small_rodents > 0 ORDER BY ID DESC", nativeQuery = true)
     List<Offer> findAllBySmall_rodentsGreaterThan();
 
-    @Query(value = "SELECT * FROM offers WHERE big_rodents > 0", nativeQuery = true)
+    @Query(value = "SELECT * FROM offers WHERE big_rodents > 0 ORDER BY ID DESC", nativeQuery = true)
     List<Offer> findAllByBig_rodentsGreaterThan();
 
 

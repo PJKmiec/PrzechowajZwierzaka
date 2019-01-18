@@ -37,14 +37,14 @@ public class OfferController {
 
     @RequestMapping("/sitters")
     public String listOffersPetsitters(Model model) {
-        List<Offer> offers = offerRepository.findAllByTypeOrderByStartsDesc("s");
+        List<Offer> offers = offerRepository.findAllByTypeOrderByIdDesc("s");
         model.addAttribute("offers", offers);
         return "offers";
     }
 
     @RequestMapping("/pets")
     public String listOffersPets(Model model) {
-        List<Offer> offers = offerRepository.findAllByTypeOrderByStartsDesc("o");
+        List<Offer> offers = offerRepository.findAllByTypeOrderByIdDesc("o");
         model.addAttribute("offers", offers);
         return "offers";
     }
@@ -85,7 +85,7 @@ public class OfferController {
                 offers = offerRepository.findAllByMiscGreaterThan(0);
                 break;
             default :
-                offers = offerRepository.findAllByTypeOrderByStartsDesc("o");
+                offers = offerRepository.findAllByTypeOrderByIdDesc("o");
         }
         model.addAttribute("offers", offers);
         return "offers";
