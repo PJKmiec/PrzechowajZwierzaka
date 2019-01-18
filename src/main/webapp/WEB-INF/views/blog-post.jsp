@@ -62,10 +62,7 @@
 
                 <!-- Comment -->
                 <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="<c:choose>
-                   <c:when test="${not empty item.user.pic}">/resources/img/${item.user.pic}</c:when>
-                   <c:otherwise>http://placehold.it/50x50</c:otherwise>
-                    </c:choose>" alt="" width="50" height="50">
+                    <img class="d-flex mr-3 rounded-circle" src="/resources/img/${item.user.pic}" alt="" width="50" height="50">
                     <div class="media-body">
                         <c:if test="${sessionScope.user.login!=null}">
                             <div class="upper-toolbar">
@@ -111,10 +108,7 @@
                                 <!-- Reply -->
                                 <hr>
                                 <div class="media mt-4">
-                                    <img class="d-flex mr-3 rounded-circle" src="<c:choose>
-                   <c:when test="${not empty r.user.pic}">/resources/img/${r.user.pic}</c:when>
-                   <c:otherwise>http://placehold.it/50x50</c:otherwise>
-                    </c:choose>" alt="" width="50" height="50">
+                                    <img class="d-flex mr-3 rounded-circle" src="/resources/img/${r.user.pic}" alt="" width="50" height="50">
                                     <div class="media-body">
                                         <c:if test="${sessionScope.user.login!=null}">
                                         <div class="upper-toolbar">

@@ -26,10 +26,74 @@
     </ol>
 
     <c:if test="${sessionScope.user.login!=null}">
-    <div class="row h-100 justify-content-center align-items-center">
-        <a href="/offer/add" class="btn btn-primary btn-lg">Dodaj własną ofertę &raquo;</a>
-    </div><hr></c:if>
+        <div class="row h-100 justify-content-center align-items-center">
+            <a href="/offer/add" class="btn btn-primary btn-lg">Dodaj własną ofertę &raquo;</a>
+        </div>
+    </c:if>
 
+
+    <div class="card my-4">
+        <h5 class="card-header">Szukaj ofert:</h5>
+        <div class="card-body">
+
+
+
+                <form action="/offer/city" method="post">
+                    <div class="form-row">
+                        <div class="col-2">
+                            <label for="city" class="col-form-label">Znajdź oferty z miasta:</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" name="city" class="form-control" placeholder="Nazwa miasta">
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-primary mb-2">Szukaj &raquo;</button>
+                        </div>
+                    </div>
+                </form>
+
+
+
+            <br>
+
+            <div class="row">
+                <div class="col-sm-2" style="line-height: 46px">Rodzaj zwierzęcia:</div>
+                <div class="col-sm-10">
+                    <a href="/offer/a/cats" class="icon icon-cat" title="Koty"></a>
+                    <a href="/offer/a/dogs" class="icon icon-dog" title="Psy"></a>
+                    <a href="/offer/a/birds" class="icon icon-bird" title="Ptaki"></a>
+                    <a href="/offer/a/fish" class="icon icon-fish" title="Rybki"></a>
+                    <a href="/offer/a/small_rodents" class="icon icon-small-rodent" title="Małe gryzonie"></a>
+                    <a href="/offer/a/big_rodents" class="icon icon-big-rodent" title="Duże gryzonie"></a>
+                    <a href="/offer/a/reptiles" class="icon icon-reptile" title="Gady/płazy"></a>
+                    <a href="/offer/a/bugs" class="icon icon-bug" title="Owady"></a>
+                    <a href="/offer/a/horses" class="icon icon-horse" title="Konie"></a>
+                    <a href="/offer/a/misc" class="icon icon-misc" title="Inne"></a>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-sm-2" style="line-height: 46px">Rodzaj wymagań:</div>
+                <div class="col-sm-10">
+                    <a href="/offer/r/f" class="icon icon-feed" title="Karmienie"></a>
+                    <a href="/offer/r/w" class="icon icon-walk" title="Spacery"></a>
+                    <a href="/offer/r/c" class="icon icon-clean" title="Sprzątanie"></a>
+                    <a href="/offer/r/g" class="icon icon-groom" title="Pielęgnacja"></a>
+                    <a href="/offer/r/m" class="icon icon-medicate" title="Podawanie leków"></a>
+                    <a href="/offer/r/t" class="icon icon-transport" title="Transport"></a>
+                    <a href="/offer/r/e" class="icon icon-examine" title="Monitorowanie zdrowia"></a>
+                    <a href="/offer/r/v" class="icon icon-vet" title="Wizyta u weterynarza"></a>
+                    <a href="/offer/r/i" class="icon icon-ill" title="Choruje"></a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <hr>
 
     <div class="row">
 
@@ -38,10 +102,8 @@
             <div class="col-lg-4 mb-4">
                 <div class="card h-100">
                     <h3 class="card-header bg-primary text-white">${item.pet_name}</h3>
-                    <a href="/offer/see/${item.id}"><img class="card-img-top" src="<c:choose>
-                   <c:when test="${not empty item.pic}">/resources/img/${item.pic}</c:when>
-                   <c:otherwise>http://placehold.it/700x400</c:otherwise>
-                    </c:choose>" alt=""></a>
+                    <a href="/offer/see/${item.id}"><img class="card-img-top" src="/resources/img/${item.pic}"
+                                                         alt=""></a>
                     <div class="card-body">
                         <div class="display-4">${item.price} PLN</div>
                         <div class="font-italic">za dobę</div>
@@ -114,7 +176,7 @@
                                 <div title="Choruje" class="icon icon-ill"></div>
                             </c:if>
                         </li>
-                        <li class="list-group-item">Wystawił: <a
+                        <li class="list-group-item">Zamieścił: <a
                                 href="user/see/${item.user.id}">${item.user.login}
                             (&starf;${item.user.rating})</a></li>
 

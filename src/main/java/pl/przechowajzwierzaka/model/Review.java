@@ -121,7 +121,7 @@ public class Review {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = Nl2br.rm(description);
     }
 
     public String getCreated() {

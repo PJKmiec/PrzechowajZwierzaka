@@ -28,15 +28,102 @@
 
             <hr>
 
-            <!-- Date/Time -->
-            <p>Cena: ${offer.price} PLN / dzień</p>
+            <div class="row">
+                <div class="col-sm-2" style="line-height: 46px"><strong>Zwierzęta:</strong></div>
+                <div class="col-sm-10">
+                    <c:if test="${offer.cats gt 0}">
+                        <div title="Koty (${offer.cats})" class="icon icon-cat"></div>
+                    </c:if>
+                    <c:if test="${offer.dogs gt 0}">
+                        <div title="Psy (${offer.dogs})" class="icon icon-dog"></div>
+                    </c:if>
+                    <c:if test="${offer.birds gt 0}">
+                        <div title="Ptaki (${offer.birds})" class="icon icon-bird"></div>
+                    </c:if>
+                    <c:if test="${offer.fish gt 0}">
+                        <div title="Rybki (${offer.fish})" class="icon icon-fish"></div>
+                    </c:if>
+                    <c:if test="${offer.small_rodents gt 0}">
+                        <div title="Małe gryzonie (${offer.small_rodents})"
+                             class="icon icon-small-rodent"></div>
+                    </c:if>
+                    <c:if test="${offer.big_rodents gt 0}">
+                        <div title="Duże gryzonie (${offer.big_rodents})" class="icon icon-big-rodent"></div>
+                    </c:if>
+                    <c:if test="${offer.reptiles gt 0}">
+                        <div title="Gady / płazy (${offer.reptiles})" class="icon icon-reptile"></div>
+                    </c:if>
+                    <c:if test="${offer.bugs gt 0}">
+                        <div title="Owady (${offer.bugs})" class="icon icon-bug"></div>
+                    </c:if>
+                    <c:if test="${offer.horses gt 0}">
+                        <div title="Konie (${offer.horses})" class="icon icon-horse"></div>
+                    </c:if>
+                    <c:if test="${offer.misc gt 0}">
+                        <div title="Inne (${offer.misc})" class="icon icon-misc"></div>
+                    </c:if>
+                </div>
+            </div>
+
+            <hr>
+
+            <p>
+                <strong>Cena:</strong> ${offer.price} PLN / dzień<br>
+                <strong>Ważna:</strong> ${offer.starts} do ${offer.ends}
+            </p>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-sm-2" style="line-height: 46px"><strong>Wymagania:</strong></div>
+                <div class="col-sm-10">
+                    <c:if test="${fn:contains(offer.requirements, 'f')}">
+                        <div title="Karmienie" class="icon icon-feed"></div>
+                    </c:if>
+                    <c:if test="${fn:contains(offer.requirements, 'w')}">
+                        <div title="Spacery" class="icon icon-walk"></div>
+                    </c:if>
+                    <c:if test="${fn:contains(offer.requirements, 'c')}">
+                        <div title="Sprzątanie" class="icon icon-clean"></div>
+                    </c:if>
+                    <c:if test="${fn:contains(offer.requirements, 'g')}">
+                        <div title="Pielęgnacja" class="icon icon-groom"></div>
+                    </c:if>
+                    <c:if test="${fn:contains(offer.requirements, 'm')}">
+                        <div title="Podawanie leków" class="icon icon-medicate"></div>
+                    </c:if>
+                    <c:if test="${fn:contains(offer.requirements, 't')}">
+                        <div title="Transport" class="icon icon-transport"></div>
+                    </c:if>
+                    <c:if test="${fn:contains(offer.requirements, 'e')}">
+                        <div title="Monitorowanie zdrowia" class="icon icon-examine"></div>
+                    </c:if>
+                    <c:if test="${fn:contains(offer.requirements, 'v')}">
+                        <div title="Wizyta u weterynarza" class="icon icon-vet"></div>
+                    </c:if>
+                    <c:if test="${fn:contains(offer.requirements, 'i')}">
+                        <div title="Choruje" class="icon icon-ill"></div>
+                    </c:if>
+                </div>
+            </div>
+
+            <hr>
+
+            <p>
+                <strong>Zamieścił:</strong> <a href="user/see/${offer.user.id}">${offer.user.login}
+                (&starf;${offer.user.rating})</a> dnia ${offer.created}<br>
+                <strong>Miasto:</strong> ${offer.city}<br>
+                <strong>Adres:</strong> ${offer.address}
+            </p>
 
             <hr>
 
             <!-- Post Content -->
-            <p>${offer.description}</p>
+            <p><strong>Opis:</strong><br><br>${offer.description}</p>
 
             <hr>
+
+            <a href="/offer/take/${offer.id}" class="btn btn-primary btn-lg">Zgłoś się &raquo;</a>
 
             <c:if test="${sessionScope.user.login!=null}">
                 <!-- Comments Form -->
@@ -61,10 +148,8 @@
 
                 <!-- Comment -->
                 <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="<c:choose>
-                   <c:when test="${not empty item.user.pic}">/resources/img/${item.user.pic}</c:when>
-                   <c:otherwise>http://placehold.it/50x50</c:otherwise>
-                    </c:choose>" alt="" width="50" height="50">
+                    <img class="d-flex mr-3 rounded-circle" src="/resources/img/${item.user.pic}" alt="" width="50"
+                         height="50">
                     <div class="media-body">
                         <c:if test="${sessionScope.user.login!=null}">
                             <div class="upper-toolbar">
@@ -110,10 +195,8 @@
                                 <!-- Reply -->
                                 <hr>
                                 <div class="media mt-4">
-                                    <img class="d-flex mr-3 rounded-circle" src="<c:choose>
-                   <c:when test="${not empty r.user.pic}">/resources/img/${r.user.pic}</c:when>
-                   <c:otherwise>http://placehold.it/50x50</c:otherwise>
-                    </c:choose>" alt="" width="50" height="50">
+                                    <img class="d-flex mr-3 rounded-circle" src="/resources/img/${r.user.pic}" alt=""
+                                         width="50" height="50">
                                     <div class="media-body">
                                         <c:if test="${sessionScope.user.login!=null}">
                                             <div class="upper-toolbar">
@@ -178,12 +261,15 @@
             <div class="card mb-4">
                 <h5 class="card-header">Szukaj ofert według miasta</h5>
                 <div class="card-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Nazwa miasta">
-                        <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">&raquo;</button>
+                    <form action="/offer/city" method="post">
+                        <div class="input-group">
+                            <input type="text" name="city" class="form-control" placeholder="Nazwa miasta">
+                            <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="submit">&raquo;</button>
                 </span>
-                    </div>
+                        </div>
+                    </form>
+
                 </div>
             </div>
 
@@ -192,32 +278,16 @@
                 <h5 class="card-header">Szukaj ofert według zwierząt</h5>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">Psy</a>
-                                </li>
-                                <li>
-                                    <a href="#">Myszy</a>
-                                </li>
-                                <li>
-                                    <a href="#">Rybki</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#">Koty</a>
-                                </li>
-                                <li>
-                                    <a href="#">Chomiki</a>
-                                </li>
-                                <li>
-                                    <a href="#">Pratchawce</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <a href="/offer/a/cats" class="icon icon-cat" title="Koty"></a>
+                        <a href="/offer/a/dogs" class="icon icon-dog" title="Psy"></a>
+                        <a href="/offer/a/birds" class="icon icon-bird" title="Ptaki"></a>
+                        <a href="/offer/a/fish" class="icon icon-fish" title="Rybki"></a>
+                        <a href="/offer/a/small_rodents" class="icon icon-small-rodent" title="Małe gryzonie"></a>
+                        <a href="/offer/a/big_rodents" class="icon icon-big-rodent" title="Duże gryzonie"></a>
+                        <a href="/offer/a/reptiles" class="icon icon-reptile" title="Gady/płazy"></a>
+                        <a href="/offer/a/bugs" class="icon icon-bug" title="Owady"></a>
+                        <a href="/offer/a/horses" class="icon icon-horse" title="Konie"></a>
+                        <a href="/offer/a/misc" class="icon icon-misc" title="Inne"></a>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="components/header.jsp"/>
 
 <header>
@@ -120,7 +121,7 @@
                         <li><a href="user/register">Dodawanie użytkownika</a></li>
                         <li><a href="user/edit">Edycja / usuwanie użytkowników</a></li>
                     </ul>
-                    <c:if test = "${sessionScope.user.type == '2'}">
+                    <c:if test="${sessionScope.user.type == '2'}">
                         <ul><b>Oferta:</b>
                             <li><a href="offer/add">Dodawanie oferty</a></li>
                             <li><a href="offer/edit">Edycja / usuwanie oferty</a></li>
@@ -144,103 +145,35 @@
     <hr>
 
     <!-- Portfolio Section -->
-    <h2>Szukają opiekuna <small><a href="/offers/pets">Zobacz wszystkie &raquo;</a></small></h2>
+    <h2>Szukają opiekuna
+        <small><a href="/offer/pets">Zobacz wszystkie &raquo;</a></small>
+    </h2>
 
     <div class="row">
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="/resources/img/ani1.jpg" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Śmigacz</a>
-                    </h4>
-                    <p class="card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
-                        aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt,
-                        dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Więcej</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="/resources/img/ani2.jpg" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Kapciojad</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-                        odio, gravida pellentesque urna varius vitae.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Więcej</a>
+
+        <c:forEach items="${offers}" var="offer">
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="/offer/see/${offer.id}"><img class="card-img-top" src="/resources/img/${offer.pic}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="/offer/see/${offer.id}">${offer.pet_name}</a>
+                        </h4>
+                        <p class="card-text">
+                            <strong>Cena:</strong> ${offer.price} PLN / dzień<br>
+                            <strong>Ważna:</strong> ${fn:substringBefore(offer.starts, ' ')} do ${fn:substringBefore(offer.starts, ' ')}<br>
+                            <strong>Zamieścił:</strong> <a href="user/see/${offer.user.id}">${offer.user.login} (&starf;${offer.user.rating})</a><br>
+                            <strong>Miasto:</strong> ${offer.city}
+
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/offer/see/${offer.id}" class="btn btn-primary">Zobacz szczegóły</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="/resources/img/ani3.jpg" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Jackie</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error
-                        quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure
-                        perspiciatis mollitia recusandae vero vel quam!</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Więcej</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="/resources/img/ani4.jpg" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Zjadacz Ludzi</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-                        odio, gravida pellentesque urna varius vitae.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Więcej</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="/resources/img/ani5.jpg" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Rozpruwacz</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
-                        odio, gravida pellentesque urna varius vitae.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Więcej</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="/resources/img/ani6.jpg" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Puszek</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum
-                        suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates,
-                        nemo repellat fugiat excepturi! Nemo, esse.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Więcej</a>
-                </div>
-            </div>
-        </div>
+        </c:forEach>
+
     </div>
     <!-- /.row -->
 

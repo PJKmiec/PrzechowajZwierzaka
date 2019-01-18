@@ -261,7 +261,7 @@ public class Offer {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = Nl2br.rm(description);
     }
 
     public int getCats() {

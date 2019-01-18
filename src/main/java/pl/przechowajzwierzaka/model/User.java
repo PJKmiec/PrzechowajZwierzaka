@@ -147,7 +147,7 @@ public class User {
     }
 
     public void setBio(String bio) {
-        this.bio = bio;
+        this.bio = Nl2br.rm(bio);
     }
 
     public double getRating() {

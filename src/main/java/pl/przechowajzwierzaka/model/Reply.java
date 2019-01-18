@@ -83,7 +83,7 @@ public class Reply {
     }
 
     public void setText(String text) {
-        this.text = text;
+        this.text = Nl2br.rm(text);
     }
 
     public int getStatus() {

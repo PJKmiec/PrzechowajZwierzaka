@@ -95,7 +95,7 @@ public class Blog {
     }
 
     public void setContent(String content) {
-        this.content = content;
+        this.content = Nl2br.rm(content);
     }
 
     public int getStatus() {

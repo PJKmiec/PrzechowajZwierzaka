@@ -17,6 +17,7 @@ import pl.przechowajzwierzaka.repository.UserRepository;
 import javax.validation.Valid;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -48,7 +49,63 @@ public class OfferController {
         return "offers";
     }
 
-    @RequestMapping("/see/{id}")
+    @RequestMapping("/a/{animal}")
+    public String listOffersByAnimal(@PathVariable String animal, Model model) {
+        List<Offer> offers = new ArrayList<>();
+
+        switch(animal) {
+            case "cats" :
+                offers = offerRepository.findAllByCatsGreaterThan(0);
+                break;
+            case "dogs" :
+                offers = offerRepository.findAllByDogsGreaterThan(0);
+                break;
+            case "birds" :
+                offers = offerRepository.findAllByBirdsGreaterThan(0);
+                break;
+            case "fish" :
+                offers = offerRepository.findAllByFishGreaterThan(0);
+                break;
+            case "small_rodents" :
+                offers = offerRepository.findAllBySmall_rodentsGreaterThan();
+                break;
+            case "big_rodents" :
+                offers = offerRepository.findAllByBig_rodentsGreaterThan();
+                break;
+            case "reptiles" :
+                offers = offerRepository.findAllByReptilesGreaterThan(0);
+                break;
+            case "bugs" :
+                offers = offerRepository.findAllByBugsGreaterThan(0);
+                break;
+            case "horses" :
+                offers = offerRepository.findAllByHorsesGreaterThan(0);
+                break;
+            case "misc" :
+                offers = offerRepository.findAllByMiscGreaterThan(0);
+                break;
+            default :
+                offers = offerRepository.findAllByTypeOrderByStartsDesc("o");
+        }
+        model.addAttribute("offers", offers);
+        return "offers";
+    }
+
+    @RequestMapping("/r/{requirement}")
+    public String listOffersByRequirement(@PathVariable String requirement, Model model) {
+        List<Offer> offers = offerRepository.findAllByRequirementsContainingOrderByIdDesc(requirement);
+        model.addAttribute("offers", offers);
+        return "offers";
+    }
+
+    @RequestMapping(value = "/city", method = RequestMethod.POST)
+    public String listOffersByCity(Model model, @ModelAttribute("city")String city) {
+        List<Offer> offers = offerRepository.findAllByCityContainingOrderByIdDesc(city);
+        model.addAttribute("offers", offers);
+        return "offers";
+    }
+
+        @RequestMapping("/see/{id}")
     public String seeOffer(@PathVariable long id, Model model) {
         Offer offer = offerRepository.findOne(id);
         model.addAttribute(offer);
@@ -58,7 +115,6 @@ public class OfferController {
         model.addAttribute("reply", new Reply());
         return "offer-details";
     }
-
 
     @RequestMapping("/edit")
     public String listOffers(Model model) {
